@@ -6,3 +6,5 @@ pull test
 push test
 
 vscode test!
+
+vscode pull test1
