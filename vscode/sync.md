@@ -12,7 +12,7 @@
 
 ### 常见错误
 
-#### Sync : Invalid / Expired GitHub Token. Please generate new token with scopes mentioned in readme. Exception Logged in Console.
+##### Sync : Invalid / Expired GitHub Token. Please generate new token with scopes mentioned in readme. Exception Logged in Console.
 
 
 > 这个问题大部分是由于gist id的访问令牌token失效了，只需要重新生成一下gist id的token并保存在配置文件里面即可
