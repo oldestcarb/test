@@ -19,7 +19,6 @@
 > 注意：这里重新生成之后，有关此gist id引用到的地方的访问令牌也需要同步更新，否则没办法使用。
 > Replace token
 > 复制重新生成好的token，修改配置文件
-> 
 > Win下：C:\Users\Administrator\AppData\Roaming\Code\User
 > Mac下：~/Library/Application Support/Code/User/syncLocalSettings.json
 > Linux下：~/.config/Code/User/syncLocalSettings.json
