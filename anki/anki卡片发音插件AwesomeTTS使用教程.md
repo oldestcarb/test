@@ -3,7 +3,7 @@
 ### 参考
 > [[常见问题]如何发音之AwesomeTTS插件使用](https://www.douban.com/group/topic/80062932/)  
 
-###　anki卡片发音有这么几种方法
+### anki卡片发音有这么几种方法
 >1. AwesomeTTS插件发音 
 >2. 语音库发音 
 >3. AudioDownloader 或 AnkiSoundM 

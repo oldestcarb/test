@@ -12,3 +12,8 @@
 2. `AnKindle-Vocab.apkg`为anki模板
 3. `ankidle.js`为`ankidle-vocab`的卡片设计，正面、通用、背面都在里面，分别复制过去就行
 4. `_collins_c.css`为mdx词典`collins`的样式设计
+
+### 附注
+
+- 若要增加发音，参考上级文件夹内的`anki卡片发音插件AwesomeTTS使用教程`
+    > [anki卡片发音插件AwesomeTTS使用教程](https://github.com/oldestcrab/Mybooks/blob/master/anki/anki%E5%8D%A1%E7%89%87%E5%8F%91%E9%9F%B3%E6%8F%92%E4%BB%B6AwesomeTTS%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.md)
