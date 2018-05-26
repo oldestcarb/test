@@ -49,7 +49,7 @@
 
 ### 完成之后的效果图如下：
 - #### 正面
-![](http://ww1.sinaimg.cn/large/e2528559gy1frp4d8mxf1j20i40ieaaa.jpg)
+![ankindle-vocab模板正面效果_2018-05-26_22-36-39](http://ww1.sinaimg.cn/large/e2528559gy1frp4d8mxf1j20i40ieaaa.jpg)
 
 - #### 背面
-![](http://ww1.sinaimg.cn/large/e2528559gy1frp4f7bbodj20i40rn0tr.jpg)
+![ankindle-vocab模板背面效果_2018-05-26_22-37-41](http://ww1.sinaimg.cn/large/e2528559gy1frp4f7bbodj20i40rn0tr.jpg)

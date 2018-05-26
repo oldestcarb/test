@@ -10,5 +10,5 @@
 
 1. `ankindle魔改配置步骤及方法`为操作方法以及步骤
 2. `AnKindle-Vocab.apkg`为anki模板
-3. `ankidle.js`为`ankidle-vocab`的卡片设计，正面、通用、背面都在里面，分别复制过去就行。
+3. `ankidle.js`为`ankidle-vocab`的卡片设计，正面、通用、背面都在里面，分别复制过去就行
 4. `_collins_c.css`为mdx词典`collins`的样式设计
