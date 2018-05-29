@@ -1,3 +1,2 @@
-### sync.md
-> vscode中的插件Settings Sync（设置和插件同步）基本用法
+> 小荷才露尖尖角，早有蜻蜓立上头。
 

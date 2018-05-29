@@ -2,8 +2,8 @@
 
 ### 文件内目录
 
-1. `/ankindle` 为anki插件ankindle的配置教程
-2. `anki卡片发音插件AwesomeTTS使用教程.md`为anki插件AwesomeTTS的使用教程
+1. `ankindle`——anki插件ankindle的配置教程
+2. `anki卡片发音插件AwesomeTTS使用教程.md`——anki插件AwesomeTTS的使用教程
 
 
 ### 附注
