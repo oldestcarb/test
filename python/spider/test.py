@@ -2,30 +2,30 @@ import requests
 
 url = "https://www.baidu.com"
 
-headers = {"user-agent":"","connection":"keep-alive"}
+kw = {"kw":"baidu"}
 
-kw = {"wd":"baidu"}
-
-proxies = {
-    "http":"http://1.1.1.1:111"
-    "https":"https://2.2.2.2:222"
+headers = {
+    "user-agent":"",
+    "cookie":""
 }
 
 formdata = {
-    "type":"auto",
-    "i":"i love python",
-    "ue":"utf-8"
-    "email":"",
-    "passwd":""
+    "i":"fanyi",
+    "email":"qiu@163.com",
+    "pwd":"1234567" 
 }
 
-auth = ("test","123456")
+proxy = {
+    "http":"http://1.1.1.1:1111",
+    "https":"https://2.2.2.2:2222" 
+}
+
+auth = ("name","password" )
 
 sess = requests.session()
 
-response = requests.get(url, params = kw, headers = headers, proxies = proxies, verify = True)
+response = requests.get(url, headers = headers, params = kw, proxies = proxy, auth = auth, verify = True)
 
-responses = sess.get(url, data = formdata, headers = headers, auth = auth)
+responses = sess.post(url, headers = headers, data = formdata)
 
-cookkk = sess.get()
-
+print(response.text,response.content, response.url, response.encoding, response.status_code)
