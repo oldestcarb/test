@@ -1,4 +1,5 @@
 ### requests
+```pthon
 import requests
 
 url = "https://www.baidu.com"
@@ -30,15 +31,15 @@ response = requests.get(url, headers = headers, params = kw, proxies = proxy, au
 responses = sess.post(url, headers = headers, data = formdata)
 
 print(response.text,response.content, response.url, response.encoding, response.status_code)
-
+```
 
 ### lxml
-form lxml import etree
-# / // . .. @
+```python
+from lxml import etree
 
 text = ```
     <div></div>
-```
+    ```
 html = etree.HTML(text)
 
 # 获取bookstore下倒数第二个book元素下面href为link.html的a标签,a/@href 获取href属性值
@@ -47,3 +48,24 @@ result = html.xpath('/bookstore/book[last()-1]//a[@href = "link.html"]')
 results = html.xpath('//div[contains(@id,"qiushi")]')
 
 print(result[0].tag, results[0].text)
+```
+
+### jsonpath
+```
+import json
+import jsonpath
+
+# 把json格式字符串转换成python对象
+jsonobj = json.loads(html)
+
+result = jsonpath.jsonpath(jsonobj,'$..')
+```
+
+XPath	|JSONPath	| 描述
+:-      | :-        | :-
+/	    |$	        | 根节点
+.	    |@	        | 现行节点
+/	    |.or[]	    | 取子节点
+..	    |n/a	    | 取父节点，Jsonpath未支持
+//	    |..	        | 就是不管位置，选择所有符合条件的条件
+*	    |*	        | 匹配所有元素节点
