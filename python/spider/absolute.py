@@ -1,3 +1,4 @@
+### requests
 import requests
 
 url = "https://www.baidu.com"
@@ -29,3 +30,20 @@ response = requests.get(url, headers = headers, params = kw, proxies = proxy, au
 responses = sess.post(url, headers = headers, data = formdata)
 
 print(response.text,response.content, response.url, response.encoding, response.status_code)
+
+
+### lxml
+form lxml import etree
+# / // . .. @
+
+text = ```
+    <div></div>
+```
+html = etree.HTML(text)
+
+# 获取bookstore下倒数第二个book元素下面href为link.html的a标签,a/@href 获取href属性值
+result = html.xpath('/bookstore/book[last()-1]//a[@href = "link.html"]')
+
+results = html.xpath('//div[contains(@id,"qiushi")]')
+
+print(result[0].tag, results[0].text)
