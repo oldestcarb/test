@@ -69,3 +69,18 @@ XPath	|JSONPath	| 描述
 ..	    |n/a	    | 取父节点，Jsonpath未支持
 //	    |..	        | 就是不管位置，选择所有符合条件的条件
 *	    |*	        | 匹配所有元素节点
+
+
+### re
+```python
+import re
+
+pattern = re.compile(r'\d+')
+
+a = pattern.match('one123two345',0,10)
+#search findall finditer
+
+b = re.compile(r'[\s,\,,\;]+')
+b.split('a,b;  c')
+b.sub(r'789','one123two345')
+```
