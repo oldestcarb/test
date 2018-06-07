@@ -76,11 +76,9 @@ XPath	|JSONPath	| 描述
 import re
 
 pattern = re.compile(r'\d+')
-
-a = pattern.match('one123two345',0,10)
-#search findall finditer
-
-b = re.compile(r'[\s,\,,\;]+')
-b.split('a,b;  c')
-b.sub(r'789','one123two345')
+s = "one123two456three789"
+a = pattern.match(s,0,9)
+#search findall finditer 
+b = pattern.split(s)
+c = pattern.sub(r'four',s)
 ```
