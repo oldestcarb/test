@@ -82,3 +82,18 @@ a = pattern.match(s,0,9)
 b = pattern.split(s)
 c = pattern.sub(r'four',s)
 ```
+### 请求报头
+```
+GET https://www.baidu.com/ HTTP/1.1
+Host: www.baidu.comm
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: 
+Accept:
+Referer:
+Accept-Encoding:
+Accept-Language:
+Accept-Charset:
+Cookie:
+Content-Type:
+```
