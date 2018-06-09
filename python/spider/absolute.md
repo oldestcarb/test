@@ -30,7 +30,7 @@ response = requests.get(url, headers = headers, params = kw, proxies = proxy, au
 
 responses = sess.post(url, headers = headers, data = formdata)
 
-print(response.text,response.content, response.url, response.encoding, response.status_code)
+print(response.text, response.content, response.url, response.encoding, response.status_code)
 ```
 
 ### lxml
@@ -78,9 +78,8 @@ import re
 pattern = re.compile(r'\d+')
 s = "one123two456three789"
 a = pattern.match(s,0,9)
-#search findall finditer 
-b = pattern.split(s)
-c = pattern.sub(r'four',s)
+#search findall finditer spilt
+b = pattern.sub(r'four',s)
 ```
 ### 请求报头
 ```
