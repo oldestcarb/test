@@ -96,3 +96,10 @@ Accept-Charset:
 Cookie:
 Content-Type:
 ```
+Content-Type   | 	提交数据方式
+:-  | :-
+application/x-www-form-urlencoded   |	Form 表单提交
+multipart/form-data   |	表单文件上传提交
+application/json   |	序列化 Json 数据提交
+text/xml   |	XML 数据提交
+
