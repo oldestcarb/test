@@ -103,3 +103,33 @@ multipart/form-data   |	表单文件上传提交
 application/json   |	序列化 Json 数据提交
 text/xml   |	XML 数据提交
 
+#### json
+
+json模块提供了四个功能：dumps、dump、loads、load，用于字符串和python数据类型间进行转换。
+>- json.loads() 把Json格式==字符串==解码转换成Python对象
+>- json.dumps() 实现python类型转化为json==字符串==，返回一个str对象 把一个Python对象编码转换成Json字符串
+>- json.dump()  将Python内置类型序列化为json对象后==写入文件==
+>- json.load()  读取==文件==中json形式的字符串元素 转化成python类型
+
+python3 默认的是UTF-8格式，但是在用dump写入的时候仍然要注意
+>- 在dump的时候要加上ensure_ascii=False,不然会变成ascii码写到文件中
+>- 另外python3在向txt文件写中文的时候也要注意在打开的时候加上```encoding='utf-8'```，不然也是乱码
+
+写入json数据：
+```python
+#coding=utf-8
+import json
+
+items = {
+				"username" : "username",
+				"image" :"image",
+				"content" : "content",
+				"zan" : "zan",
+				"comments" : "comments"
+			}
+			
+with open("../result/test.json",'a', encoding = "utf-8") as f:
+	f.write(json.dumps(items, ensure_ascii = False) + "\n")
+    #另一种方式：
+    #json.dump(items , f, ensure_ascii = False )
+```
