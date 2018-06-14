@@ -36,18 +36,9 @@ print(response.text, response.content, response.url, response.encoding, response
 ### lxml
 ```python
 from lxml import etree
+# 获取bookstore下倒数第二个book元素下面href属性值为link.html且id属性值包含"qiu"的a标签,a/@href 获取href属性值
+result = html.xpath('/bookstore/book[last()-1]//a[contains(@id,"qiu") and @href = "link.html"]')[0].text
 
-text = ```
-    <div></div>
-    ```
-html = etree.HTML(text)
-
-# 获取bookstore下倒数第二个book元素下面href为link.html的a标签,a/@href 获取href属性值
-result = html.xpath('/bookstore/book[last()-1]//a[@href = "link.html"]')
-
-results = html.xpath('//div[contains(@id,"qiushi")]')
-
-print(result[0].tag, results[0].text)
 ```
 
 ### jsonpath
@@ -75,7 +66,7 @@ XPath	|JSONPath	| 描述
 ```python
 import re
 
-pattern = re.compile(r'\d+')
+pattern = re.compile(r'\d+', re.S, re.I)
 s = "one123two456three789"
 a = pattern.match(s,0,9)
 #search findall finditer spilt
