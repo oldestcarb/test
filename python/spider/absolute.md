@@ -103,7 +103,7 @@ json模块提供了四个功能：dumps、dump、loads、load，用于字符串�
 >- json.load()  读取==文件==中json形式的字符串元素 转化成python类型
 
 python3 默认的是UTF-8格式，但是在用dump写入的时候仍然要注意
->- 在dump的时候要加上ensure_ascii=False,不然会变成ascii码写到文件中
+>- 在dump的时候要加上ensure_ascii=False,不然会变成ascii码写到文件中,中文字符都会变成 Unicode 字符
 >- 另外python3在向txt文件写中文的时候也要注意在打开的时候加上```encoding='utf-8'```，不然也是乱码
 
 写入json数据：
@@ -120,7 +120,7 @@ items = {
 			}
 			
 with open("../result/test.json",'a', encoding = "utf-8") as f:
-	f.write(json.dumps(items, ensure_ascii = False) + "\n")
+	f.write(json.dumps(items, ident=2, ensure_ascii = False) + "\n")
     #另一种方式：
     #json.dump(items , f, ensure_ascii = False )
 ```
