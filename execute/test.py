@@ -46,35 +46,34 @@ def get_products():
     提取商品数据
     """
     html = browser.page_source
-    with open('html.html', 'a', encoding = 'utf-8') as f:
-        f.write(html)
-    '''
+    #with open('./html.html', 'a', encoding = 'utf-8') as f:
+    #    f.write(html)
     result = etree.HTML(html)
-    items = result.xpath('')
+    items = result.xpath('//div[@id = "mleft3"]//tbody')
+    print(items)
+    print(type(items))
     for item in items:
-        product = {
-            'image': item.find('.pic .img').attr('data-src'),
-            'price': item.find('.price').text(),
-            'deal': item.find('.deal-cnt').text(),
-            'title': item.find('.title').text(),
-            'shop': item.find('.shop').text(),
-            'location': item.find('.location').text()
+        print(type(item))
+        title = item.xpath('.//td')
+        print(title)
+        content = {
+            #'title': item.xpath('./td')[0].text
+            #'url': item.xpath('./td/a/@href')[0].text(),
+            #'from': item.xpath('./td')[1].text(),
+            #'date': item.xpath('./td')[2].text()
         }
-        print(product)
-        save_to_mongo(product)
+        print(content)
+        save_to_json(content)
 
 
-def save_to_mongo(result):
+def save_to_json(result):
     """
-    保存至MongoDB
+    保存为json文件
     :param result: 结果
     """
-    try:
-        if db[MONGO_COLLECTION].insert(result):
-            print('存储到MongoDB成功')
-    except Exception:
-        print('存储到MongoDB失败')
-    '''
+    with open('./result.json', 'a', encoding = 'utf-8') as f:
+        f.write(json.dumps(result, ident = 2, ensure_ascii = False))
+    
 
 def main():
     """
@@ -87,3 +86,16 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
