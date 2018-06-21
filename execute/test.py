@@ -9,6 +9,7 @@ from lxml import etree
 import json
 import time
 import requests
+import re
 #import os
 
 browser = webdriver.PhantomJS(executable_path=r'C:/Users/CRAB/Desktop/mybooks/execute/phantomjs-2.1.1-windows/bin/phantomjs.exe')
@@ -51,6 +52,7 @@ def get_products():
     提取文章内容
     """
     html = browser.page_source
+    #print(type(html))
     #with open('./html.html', 'a', encoding = 'utf-8') as f:
     #    f.write(html)
     result = etree.HTML(html)
@@ -71,6 +73,10 @@ def get_products():
         kw = item.xpath('.//td[@width = "70%"]/a/@href')[0]
         #print(type(kw))
         url = 'http://paper.sciencenet.cn' + kw
+        #/htmlpaper/201861510484322846535.shtm
+        filename_pattern = re.compile(r'(\d+)*\.')
+        filename_result = filename_pattern.search(kw)
+        filename = filename_result.group(1)
         #print(url)
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
         }
@@ -80,24 +86,28 @@ def get_products():
         #print(detail_html.encoding,detail_html.apparent_encoding)
         #print(detail_html.text)
         #detail_html = etree.HTML(response.text)
-        save_to_json(response)
+        save_to_json(response.text, filename)
 
 
-def save_to_json(result):
+def save_to_json(result, filename):
     """
     保存到文件
     :param result: 结果
     """
     #with open('./result.json', 'a', encoding = 'utf-8') as f:
     #    f.write(json.dumps(result, indent = 2, ensure_ascii = False))
-    detail_html = etree.HTML(result.text)
-    detail_content = detail_html.xpath('//*[@id = "content"]')
-    print(type(detail_content))
-    print(detail_content)
-    #detail_result = etree.tostring(detail_content)
-    #with open('./test.html', 'w', encoding = 'utf-8') as f:
-    #    f.write(deatil_result.decode('utf-8'))
-    #print('done')    
+    #print(result)
+    detail_pattern = re.compile(r'<table id="content".*<!-- JiaThis Button END -->.*?</table>',re.S)
+    detail_result = detail_pattern.search(result)
+    #print(type(detail_html))
+    #detail_content = etree.tostring(detail_html)
+    #detail_result = detail_html.xpath('//table[@id="content"]')
+    #print(type(detail_result))
+    #print(detail_result.group())
+    full_filename = './' + filename + '.html'
+    with open(full_filename, 'w', encoding = 'utf-8') as f:
+        f.write(detail_result.group())
+    print('文件' + full_filename + '保存成功')    
 
 def main():
     """
