@@ -113,3 +113,23 @@
     > I am taking a makeup test tomorrow. 
 6. 用法六：与always等连用，表示多次重复，且含有感情色彩
     > He's continually asking me for money. 
+
+#### 过去进行时
+1. 常见用法：用来设置故事的背景
+    - 长动作用过去进行时，短动作用一般过去时
+    > I was walking along the street late last night when suddenly I heard footsteps behind me. Somebody was following me. I was frightened and I started to run.
+
+2. 少见用法：两个过去同时在持续的动作
+    > While I was studying last night, my wife was watching TV. 
+3. 典型用法：描述一个过去的特定时刻正在发生的事情
+    > It was raining hard, but no one stopped working.
+4. 口语用法：表示委婉的请求或提建议
+    > I was thinking that you'd like to lend me your car.
+
+#### 将来进行时
+1. 典型用法：将来某一特定时刻正在持续的事
+    > By this time next year, I will be writing my thesis. 
+2. 口语用法：将来计划好的事
+    > He is taking/will be taking a makeup test next week. 
+3. 少见用法：表示背景动作——提供另外一个短动作发生的事件背景
+    >　They probably will be watching TV when we get there.
