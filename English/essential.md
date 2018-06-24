@@ -132,4 +132,4 @@
 2. 口语用法：将来计划好的事
     > He is taking/will be taking a makeup test next week. 
 3. 少见用法：表示背景动作——提供另外一个短动作发生的事件背景
-    >　They probably will be watching TV when we get there.
+    > They probably will be watching TV when we get there.
