@@ -124,3 +124,19 @@ with open("../result/test.json",'a', encoding = "utf-8") as f:
     #另一种方式：
     #json.dump(items , f, ensure_ascii = False )
 ```
+
+#### selenium
+
+```
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.baidu.com')
+input = browser.find_element(By.ID,'q')
+list = browser.find_elemens(By,CSS_SELECTOR,'service-bd li')
+input.clear()
+input.send_keys('baidu')
+input.click()
+print(browser.page_source)
+browser.close()
+```
