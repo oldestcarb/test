@@ -127,16 +127,23 @@ with open("../result/test.json",'a', encoding = "utf-8") as f:
 
 #### selenium
 
-```
+```python
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 browser = webdriver.Chrome()
+browser.implicitly_wait(10)
 browser.get('https://www.baidu.com')
 input = browser.find_element(By.ID,'q')
 list = browser.find_elemens(By,CSS_SELECTOR,'service-bd li')
+wait = WebDriverWait(browser, 10)
+inputs = wait.until(EC.presence_of_element_located(By.ID,'q'))
 input.clear()
 input.send_keys('baidu')
 input.click()
-print(browser.page_source)
+print(browser.page_source, input.text, input.get_attribute('class'))
+# input.id, size, location, tag_name
 browser.close()
 ```
