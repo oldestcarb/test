@@ -13,23 +13,23 @@ git log
 # 查看当前分支 
 git branch
 
-# 新建分支a 
-git branch a
+# 新建分支dev 
+git branch dev
 
-# 切换到a分支 
-git checkout a
+# 切换到dev分支 
+git checkout dev
 
-# 新建分支b并切换当前分支为b 
-git checkout -b a
+# 新建分支dev并切换当前分支为dev
+git checkout -b dev
 
-# 合并分支a到主分支，当前分支为主分支 
-git merge a
+# 合并分支dev到主分支，当前分支为主分支 
+git merge dev
 
-# 删除a分支 
-git branch -d a
+# 删除dev分支 
+git branch -d dev
 
-# 强制删除a分支
-git branch -D a
+# 强制删除dev分支
+git branch -D dev
 
 # 新建标签
 git tag v1.0
