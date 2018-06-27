@@ -24,7 +24,7 @@ git add
 
 git commit -m 'first commit'
 
-git log
+git log --graph
 
 # 查看difference
 git diff README.md
