@@ -116,6 +116,9 @@ git tag -a v1.0 -m "blablabla..."
 # 查看所有标签信息
 git tag
 
+# 查看标签说明
+git show v1.0
+
 # 切换到tagv1.0
 git checkout v1.0
 
