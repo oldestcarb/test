@@ -1,7 +1,7 @@
 ### git学习笔记
 > [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 #### 基础
-> 忽略某些文件时，在Git工作区的根目录下创建一个特殊的`.gitignore`文件，`.gitignore`文件本身要放到版本库里，并且可以对.gitignore做版本管理！
+
 ```git
 
 git config --global user.name "oldestcrab"
@@ -133,4 +133,38 @@ git tag -d v.10
 
 # 删除一个远程标签
 git push origin :refs/tags/v1.0
+```
+
+#### 忽略文件
+> 忽略某些文件时，在Git工作区的根目录下创建一个特殊的`.gitignore`文件，`.gitignore`文件本身要放到版本库里，并且可以对.gitignore做版本管理！
+
+匹配的规则例如：
+```git
+#忽略所有 .a 结尾的文件
+*.a
+
+#但 lib.a 除外
+!lib.a
+
+# 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+/TODO
+
+#忽略 build/ 目录下的所有文件
+build/
+
+#会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+doc/*.txt
+
+```
+
+.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：
+``` git
+git rm -r --cached 
+
+git add 
+
+git commit -m'update .gitignore'
+
+git push origin master
+
 ```
