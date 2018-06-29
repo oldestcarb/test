@@ -414,6 +414,11 @@ for result in results:
 所以，如果只是获取第一个内容，可以用 search() 方法，当需要提取多个内容时，就可以用 findall() 方法。
 
 ### 6. sub()
+> re.sub(pattern, repl, string, count=0, flags=0)
+
+re.sub共有五个参数。
+> 其中三个必选参数：pattern, repl, string
+> 两个可选参数：count, flags
 
 正则表达式除了提取信息，我们有时候还需要借助于它来修改文本，比如我们想要把一串文本中的所有数字都去掉，如果我们只用字符串的 replace() 方法那就太繁琐了，在这里我们就可以借助于 sub() 方法。
 
@@ -487,6 +492,32 @@ for result in results:
 但愿人长久
 ```   
 可以看到 a 节点在经过 sub() 方法处理后都没有了，然后再 findall() 直接提取即可。所以在适当的时候我们可以借助于 sub() 方法做一些相应处理可以事半功倍。
+
+### 6.1 sub进阶repl参数
+> repl，就是replacement，替换的字符串的意思,repl可以是字符串，也可以是函数。
+
+用法如下：
+```python
+import re
+pattern = re.compile('<img src="(.*?)"', re.S)
+a = '''
+<img src="/upload/news/images/2018/6/2019331460.jpg">
+<img src="/upload/news/images/2018/6/20186211359331460.jpg">
+'''
+def test(matchobj):
+    #print(type(matchobj.group()))
+    #print('matchobj.group(1):\t' + matchobj.group(1))
+    pattern = re.compile('[a-zA-Z/.]')
+    c = pattern.sub('', matchobj.group(1))
+    d = '<img src="./img/' + c + '.jpg"'
+    #print('d:\t' + d)
+    return d
+b = pattern.sub(test, a)
+print(b)
+
+#print(b.group(1))
+#print(b)
+```
 
 ### 7. compile()
 
