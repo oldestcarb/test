@@ -138,7 +138,6 @@ git push origin :refs/tags/v1.0
 #### 忽略文件
 > 忽略某些文件时，在Git工作区的根目录下创建一个特殊的`.gitignore`文件，`.gitignore`文件本身要放到版本库里，并且可以对.gitignore做版本管理！
 
-匹配的规则例如：
 ```git
 #忽略所有 .a 结尾的文件
 *.a
