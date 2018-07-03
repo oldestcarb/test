@@ -69,7 +69,7 @@ import re
 pattern = re.compile(r'\d+', re.S, re.I)
 s = "one123two456three789"
 a = pattern.match(s,0,9)
-#search findall finditer spilt
+#search findall finditer split
 b = pattern.sub(r'four',s)
 ```
 ### 请求报头
