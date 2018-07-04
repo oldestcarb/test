@@ -111,3 +111,56 @@ for i in range(100,1000):
     if i == n**3 + m**3 + k**3:
         print(i)
 '''
+
+# 15. 利用条件运算符的嵌套来完成此题：学习成绩>=90分的同学用A表示，60-89分之间的用B表示，60分以下的用C表示
+'''
+score = int(input('请输入成绩:'))
+if score >= 90:
+    print('A')
+elif score >= 60 :
+    print('B')
+else:
+    print('C')
+'''
+
+# 16. 输出指定格式的日期
+'''
+import time
+
+print(time.time())
+print(time.localtime())
+print(time.asctime())
+print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())) 
+
+import datetime
+
+print(datetime.date.today()) 
+print(datetime.date.today().strftime('%d/%m/%Y'))
+print(datetime.date(1941, 1, 5))
+'''
+
+# 17. 输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数
+'''
+import re
+
+kw = input('请输入字符串：')
+digit = len(re.findall('\d', kw))
+letters = len(re.findall('[a-zA-Z]', kw))
+space = len(re.findall('\s', kw))
+chin = len(re.findall(r'[\u4E00-\u9FFF]',kw))
+others = len(kw) - digit - letters - space - chin
+
+print('数字个数：' + str(digit) + ', 字母个数：' + str(letters) + ', 空格字数：' + str(space) + ', 中文字数：' + str(chin) + ', 其他字符字数：' + str(others))
+'''
+
+# 18. 求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+22222(此时共有5个数相加)，几个数相加由键盘控制
+'''
+kw = input("请输入数字以及个数：")
+
+a = kw.split(',')[0]
+b = kw.split(',')[1]
+s = 0
+for i in range(1,int(b)+1):
+    s += int(a*i)
+print(s)
+'''
