@@ -93,9 +93,21 @@ for key, value in dict.items(myD):
 '''
 
 # 10. 暂停一秒输出，并格式化当前时间
-
+'''
 import time
 
 print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 time.sleep(2)
 print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+
+'''
+
+# 13. 打印出所有的"水仙花数"，所谓"水仙花数"是指一个三位数，其各位数字立方和等于该数本身。例如：153是一个"水仙花数"，因为153=1的三次方＋5的三次方＋3的三次方
+'''
+for i in range(100,1000):
+    n = i // 100
+    m = (i -n*100) // 10
+    k = i -n*100 - m*10
+    if i == n**3 + m**3 + k**3:
+        print(i)
+'''
