@@ -164,3 +164,185 @@ for i in range(1,int(b)+1):
     s += int(a*i)
 print(s)
 '''
+
+# 25. 求1+2!+3!+...+20!的和
+'''
+i = 1
+sum = 0
+for a in range(1,21):
+    i *=a
+    sum +=i
+print(sum)
+'''
+
+# 26. 利用递归方法求5!
+'''
+def fact(i):
+    sum = 0
+    if i == 0:
+        sum = 1
+    else:
+        sum = fact(i-1) * i
+    return sum
+
+print(fact(5))
+'''
+
+# 27. 利用递归函数调用方式，将所输入的5个字符，以相反顺序打印出来
+'''
+#递归方式
+def output(s, l):
+    if l == 0:
+        return
+    print(s[l-1], end = '')
+    output(s,l-1)
+
+s =  input('请输入字符串：')
+l = len(s)
+output(s, l)
+#for循环
+s =  input('请输入字符串：')
+for i in range(len(s)-1, -1, -1):
+    print(s[i], end = '')
+''' 
+
+# 28. 有5个人坐在一起，问第五个人多少岁？他说比第4个人大2岁。问第4个人岁数，他说比第3个人大2岁。问第三个人，又说比第2人大两岁。问第2个人，说比第一个人大两岁。最后问第一个人，他说是10岁。请问第五个人多大？
+'''
+def age(a):
+    if a == 1:
+        s = 10
+    else:
+        s = age(a-1)+2
+    return s
+
+print(age(5))
+'''
+
+# 29. 给一个不多于5位的正整数，要求：一、求它是几位数，二、逆序打印出各位数字
+'''
+s =  list(input('请输入数字：'))
+count = len(s)
+print('此为' + str(count) + '位数!')
+s.reverse()
+for i in range(count):
+    print(i, end = '')
+'''
+
+# 30. 一个5位数，判断它是不是回文数。即12321是回文数，个位与万位相同，十位与千位相同
+'''
+s = input('请输入一串数字：')
+
+flag = True
+
+for i in range(len(s)//2):
+    if s[i] != s[-i-1]:
+        flag = False
+        break
+if flag:
+    print(s + '是回文数！')
+else:
+    print(s + '不是回文数！')
+
+#另一种方式
+s = input('请输入一串数字：')
+a = s[::-1]
+if a==s:
+    print(s + '是回文数！')
+else:
+    print(s + '不是回文数！')
+'''
+
+# 31. 请输入星期几的第一个字母来判断一下是星期几，如果第一个字母一样，则继续判断第二个字母
+'''
+letter = input("please input:")
+#while letter  != 'Y':
+if letter == 'S':
+    print ('please input second letter:')
+    letter = input("please input:")
+    if letter == 'a':
+        print ('Saturday')
+    elif letter  == 'u':
+        print ('Sunday')
+    else:
+        print ('data error')
+    
+elif letter == 'F':
+    print ('Friday')
+    
+elif letter == 'M':
+    print ('Monday')
+    
+elif letter == 'T':
+    print ('please input second letter')
+    letter = input("please input:")
+ 
+    if letter  == 'u':
+        print ('Tuesday')
+    elif letter  == 'h':
+        print ('Thursday')
+    else:
+        print ('data error')
+        
+elif letter == 'W':
+    print ('Wednesday')
+else:
+    print ('data error')
+''' 
+
+# 33. 按逗号分隔列表
+'''
+l = [1,2,3,4,5]
+s = ','.join(str(n) for n in l)
+print(s)
+'''
+
+# 36. 求100之内的素数
+'''
+for i in range(2, 101):
+    if i > 1:
+        for m in range(2, i):
+            if i%m == 0:
+                break       
+        else:
+            print(i)
+'''
+
+# 45. 统计 1 到 100 之和
+'''
+sum = 0
+for i in range(1, 101):
+    sum += i
+print(sum)
+'''
+
+# 46. 求输入数字的平方，如果平方运算后小于 50 则退出
+'''
+error = 0
+again = 1
+while again:
+    kw = int(input('请输入一个数字：'))
+    s = kw*kw
+    print(str(kw) + '的平方为：' + str(s))
+    if s < 50:
+        again = error
+'''
+
+# 47. 两个变量值互换
+'''
+def exchange(a,b):
+    a, b = b, a
+    return (a,b)
+
+a = 22
+b = 33
+print(exchange(a,b))
+'''
+
+# 50. 输出一个随机数
+
+import random
+
+print(random.random())
+print(random.randint(1,100))
+print(random.uniform(1,10))
+print(random.choice('asdjgsjgl'))
