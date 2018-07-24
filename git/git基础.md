@@ -160,7 +160,7 @@ doc/*.txt
 ``` git
 git rm -r --cached test/
 
-git commit -m 'update .gitignore 删除已track的test'
+git commit -m 'update .gitignore 忽略已track的test'
 
 git push origin master
 
