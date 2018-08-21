@@ -1,44 +1,55 @@
 import requests
 
-url = 'https://www.baidu.com/s/'
+url = 'https://www.baidu.com'
 headers = {
     'user-agent':'',
     'connection':''
 }
-kw = {'kw','baidu'}
+kw = {
+    'kw':'baidu'
+}
 formdata = {
     'i':'baidu',
-    'email':'qiu@163.com',
-    'password':'123456'
+    'user':'qiu',
+    'pwd':'123456' 
 }
 proxy = {
     'http':'http://1.1.1.1:1111',
-    'https':'https://2.2.2.2:2222' 
+    'https':'https://2.2.2.2:2222'
 }
-auth('name','password')
-sess = requests.session()
+auth = ('qiu','password')
+sess = requests.Session()
 
-response = requests.get(url, headers = headers, params = kw, proxies = proxy, auth = auth, verify = False)
-responses = sess.post(url, data = formdata, headers = headers)
+response = requests.get(url, params = kw, headers = headers, proxies = proxy, auth = auth, verify = False)
+resposnes = sess.post(url, data = formdata, headers = headers)
 
-print(response.text, response.content, response.url, response.encoding, response.status_code)
+print(response.url, response.text, response.content, response.status_code, response.encoding)
+
 
 from lxml import etree
 
-html = etree.HTML(text)
-result = html.xpath('/bookstore/book[last()-1]//a[contains(@id, "qiu") and @href = "link.html"]')[0].text
+html = etree.HTML(content)
+response = html.xpath('/bookstore//book[last()-1]//a[@id = "qiu" and contains(@href, "link.html")]')[0].text
 
 import json
 import jsonpath
 
-jsonobj = json.loads(text)
-result = jsonpath.jsonpath(jsonobj, '$..')
+jsonobj = json.laods(html)
+response = josnpath.jsonpath(jsonobj, '$..')
 
-list = []
-with open('a.json', 'a', encoding = 'utf-8') as f:
+with open('./a.json', 'w', encoding = 'utf-8') as f:
     f.write(json.dumps(list, indent = 2, ensure_ascii = False))
 
-get https://www.baidu.com/ http/1.1
+import re
+
+pattern = re.compile('\w\d+')
+a = '123adcdg323'
+b = pattern.search(a)
+# match, findall, finditer, spilt
+c = re.sub('sdd', a)
+
+get https://www.baidu.com http/1.1
+
 host: www.baidu.com
 connection: keep-alive
 upgrade-insecure-requests: 1
@@ -47,18 +58,11 @@ accept:
 referer:
 accept-encoding:
 accept-language:
-accept-charset:
-cookies:
+accept-charset
+cookie:
 content-type:
 
 
-import re
-
-pattern = re.compile(r'\s\d+.*', re.S)
-a = 'one123two456three789'
-b = pattern.match(a, 0, 9)
-# search, findall, finditer, split
-c = pattern.sub(r'four', a)
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -67,16 +71,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 browser = webdriver.Chrome()
 browser.implicitly_wait(10)
-browse.get('https://www.baidu.com')
+browser.get('https://www.baidu.com')
 input = browser.find_element(By.ID, 'q')
-list = browser.find_elements(By.CSS_SELECTOR, 'servie li')
+list = browser.find_elements(By.CSS_SELECTOR, 'li')
 wait = WebDriverWait(browser, 10)
 inputs = wait.until(EC.presence_of_element_located(By.ID, 'q'))
 input.clear()
 input.send_keys('baidu')
 input.click()
-print(browser.page_source, input.text, input.get_attribute('class')
-)
-
-
+print(browser.page_source, input.text, input.get_attribute('class'))
 browser.close()
