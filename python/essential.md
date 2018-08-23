@@ -24,7 +24,7 @@ proxy = {
 
 auth = ("name","password" )
 
-sess = requests.session()
+sess = requests.Session()
 
 response = requests.get(url, headers = headers, params = kw, proxies = proxy, auth = auth, verify = True)
 
@@ -33,7 +33,7 @@ responses = sess.post(url, headers = headers, data = formdata)
 print(response.text, response.content, response.url, response.encoding, response.status_code)
 ```
 
-### lxml
+### lxml 
 ```python
 from lxml import etree
 # 获取bookstore下倒数第二个book元素下面href属性值为link.html且id属性值包含"qiu"的a标签,a/@href 获取href属性值

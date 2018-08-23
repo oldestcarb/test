@@ -7,7 +7,6 @@ browser = webdriver.Chrome()
 browser.implicitly_wait(10)
 browser.get('https://www.baidu.com')
 input = browser.find_element(By.ID, 'q')
-
 list = browser.find_elements(By.CSS_SELECTOR, 'li')
 wait = WebDriverWait(browser, 10)
 input = wait.until(EC.presence_of_element_located(By.ID, 'q'))
