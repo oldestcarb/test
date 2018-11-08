@@ -1,14 +1,17 @@
 ### requests
 ```pthon
 import requests
+import sys
+import random
 
 url = "https://www.baidu.com"
 
 kw = {"kw":"baidu"}
 
-headers = {
-    "user-agent":"",
-    "cookie":""
+with open(sys.path[0] + '/user-agents.txt', 'r', encoding = 'utf-8') as f:
+    list_user_agents = f.readlines()
+    user_agent = random.choice(list_user_agents).strip()
+headers = {'user-agent':user_agent}
 }
 
 formdata = {
@@ -59,14 +62,14 @@ XPath	|JSONPath	| 描述
 /	    |.or[]	    | 取子节点
 ..	    |n/a	    | 取父节点，Jsonpath未支持
 //	    |..	        | 就是不管位置，选择所有符合条件的条件
-*	    |*	        | 匹配所有元素节点
+\*	    |*	        | 匹配所有元素节点
 
 
 ### re
 ```python
 import re
 
-pattern = re.compile(r'\d+', re.S, re.I)
+pattern = re.compile(r'\d+', re.S|re.I)
 s = "one123two456three789"
 a = pattern.match(s,0,9)
 #search findall finditer split
@@ -133,13 +136,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-browser = webdriver.Chrome()
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+# chrome_options.add_argument('--disable-infobars')
+browser = webdriver.Chrome(chrome_options=chrome_options)
+
 browser.implicitly_wait(10)
 browser.get('https://www.baidu.com')
 input = browser.find_element(By.ID,'q')
 list = browser.find_elemens(By.CSS_SELECTOR,'service-bd li')
 wait = WebDriverWait(browser, 10)
-inputs = wait.until(EC.presence_of_element_located(By.ID,'q'))
+inputs = wait.until(EC.presence_of_element_located((By.ID,'q')))
 input.clear()
 input.send_keys('baidu')
 input.click()
