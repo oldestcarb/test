@@ -7,28 +7,19 @@ mysqld -remove
 2. my.ini
 ```
 [mysql]
-
 # 设置mysql客户端默认字符集
-
 default-character-set=utf8 
-
 [mysqld]
- 
 #设置3306端口
 port = 3306
- 
 # 设置mysql的安装目录
 basedir=D:\mysql\mysql-5.6.17-win32
- 
 # 设置mysql数据库的数据的存放目录
 datadir=D:\mysql\mysql-5.6.17-win32\data
- 
 # 允许最大连接数
-max_connections=200
- 
+max_connections=200 
 # 服务端使用的字符集默认为8比特编码的latin1字符集 
 character-set-server=utf8
- 
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB 
 
@@ -104,4 +95,16 @@ select id,name from students where id <=4;
 select distinct gender from students;
 # 满足其一即可
 select * from students where id >3 or isdelete = 0;
+select * from students where id in (1,3,5);
+select * from students where id between 3 and 5;
+# 聚合
+select count(*) from students where isdelete = 1;
+select max(id) from students where isdelete =1;
+select min(id) from students where isdelete =1;
+select sum(id) from students where isdelete =0;
+select avg(id) from students where isdelete =0;
+# 分组
+select isdelete,count(*) from students group by isdelete;
+select isdelete,count(*) from students group by isdelete having isdelete = 0;
+
 ```
