@@ -44,6 +44,10 @@ net start mysql
 mysqladmin -u root password root
 # 新建用户
 create user 'bmnars'@'localhost' identified by 'vi93nwYV';
+# 给用户授权
+# grant all privileges on 想授权的数据库.* to 'user1'@'%';
+# all 可以替换为 select,delete,update,create,drop
+grant all privileges on bmnars.* to bmnars@localhost;
 ```
 
 #### 日常记录
@@ -52,7 +56,7 @@ create user 'bmnars'@'localhost' identified by 'vi93nwYV';
 # 创建数据库
 create database python3 charset=utf8；
 # 创建表
-CREATE TABLE _cs_bmnars_link_xml (
+CREATE TABLE _cs_bmnars_link_v2 (
   source_url varchar(254) UNIQUE KEY,
   local_url varchar(254) ,
   source varchar(254) ,
