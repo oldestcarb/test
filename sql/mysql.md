@@ -4,33 +4,35 @@
 net stop mysql
 mysqld -remove
 ```
-2. my.ini
+2. my.ini(安装目录)
 ```
 [mysql]
 # 设置mysql客户端默认字符集
 default-character-set=utf8 
 [mysqld]
 #设置3306端口
-port = 3306
+port = 3306 
 # 设置mysql的安装目录
-basedir=D:\mysql\mysql-5.6.17-win32
+basedir=D:\program\mysql\mysql-8.0.13-winx64
 # 设置mysql数据库的数据的存放目录
-datadir=D:\mysql\mysql-5.6.17-win32\data
+datadir=D:\program\mysql\mysqldata
 # 允许最大连接数
-max_connections=200 
-# 服务端使用的字符集默认为8比特编码的latin1字符集 
+max_connections=200
+# 服务端使用的字符集默认为8比特编码的latin1字符集
 character-set-server=utf8
 # 创建新表时将使用的默认存储引擎
-default-storage-engine=INNODB 
+default-storage-engine=INNODB
+
 
 ```
-3. 安装
+3. 安装（bin目录)
 ```
 mysqld install
 net start mysql
 ```
 ##### mysql服务无法启动
 解决方案：
+mysqld --console
 1. 删除自己手动创建的data文件夹；
 2. mysqld -remove 
 3. mysqld --initialize-insecure
@@ -54,7 +56,7 @@ grant all privileges on bmnars.* to bmnars@localhost;
 ```mysql
 
 # 创建数据库
-create database python3 charset=utf8；
+create database bmnars charset=utf8;
 # 创建表
 CREATE TABLE _cs_bmnars_link_v2 (
   source_url varchar(254) UNIQUE KEY,
