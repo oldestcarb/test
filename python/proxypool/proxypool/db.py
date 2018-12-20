@@ -18,7 +18,7 @@ class RedisClient():
     
     def add(self, proxy, score = INITIAL_SCORE):
         """
-        添加代理，设置分数为最高
+        添加代理，设置分数为新代理初始分数10
         :param proxy: 代理
         :param score: 分数
         :return: 添加结果
@@ -100,8 +100,8 @@ class RedisClient():
 
 if  __name__ == '__main__':
     conn = RedisClient()
-    # result = conn.add('192.168.8.2:8888')
-    result = conn.random()
-    # result = conn.batch(0, 1)
+    result = conn.add('192.168.8.2:8888')
+    # result = conn.random()
+    # result = conn.batch(0, 10)
     print(result)
     # help(RedisClient) 
