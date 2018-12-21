@@ -28,14 +28,14 @@ def get_kw(kw, judge):
 
     if judge == 0:
         # 查询状态未更新的关键字，爬取之后状态改为 y
-        sql = 'select kw from _cs_bmnars_vigenebio_kw where status = 0 and isrun = 0 and id = %s;'
-        # print(sql)
+        sql = 'select * from _cs_bmnars_vigenebio_rs limit 10;'
+        print(sql)
         try:
-            cursor.execute(sql, (kw))
+            cursor.execute(sql)
             # 获取一行
             row = cursor.fetchone()
             print(row)
-            return row[0]
+            return row
         except:
             print('get kw error!')
         finally:
@@ -43,4 +43,6 @@ def get_kw(kw, judge):
             db.close()
 
 b = get_kw(1,0)
-print(b)
+print(type(b))
+with open(sys.path[0] + '/a.txt', 'a', encoding = 'utf-8') as f:
+    f.write(str(b))

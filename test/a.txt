@@ -1,0 +1,1 @@
+(1077, 'CH833120', 'NM_130786', 'ORF of alpha-1-B glycoprotein (A1BG) in pEnter, with C terminal Flag and His tag.', '￥1,299', 'next day', datetime.date(2018, 12, 18), 'A1BG')

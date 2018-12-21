@@ -1,12 +1,13 @@
-create table _cs_bmnars_vigenebio_keyword (
-    kw varchar(50) not null  primary key,
+create table _cs_bmnars_vigenebio_kw (
+    kw varchar(50) not null ,
     update_time date,
     status bit not null default 0,
-    isrun bit not null default 0 
+    isrun bit not null default 0,
+    id int(11) not null auto_increment primary key
 );  
 
 
-create table _cs_bmnars_vigenebio_result (
+create table _cs_bmnars_vigenebio_rs (
     id int(11) not null auto_increment primary key,
     product_no varchar(50),
     gene_no varchar(50),
@@ -26,3 +27,10 @@ alter table _cs_bmnars_vigenebio_keyword add isrun bit not null default 0 ;
 alter table _cs_bmnars_vigenebio_kw drop primary key;
 alter table _cs_bmnars_vigenebio_kw add id int(11) not null auto_increment primary key;
 update _cs_bmnars_vigenebio_kw set isrun=0, status=0;
+
+
+mysqldump -u bmnars -p bmnars _cs_bmnars_vigenebio_kw > d:\kw.sql
+mysqldump -u bmnars -p bmnars _cs_bmnars_vigenebio_rs > d:\rs.sql
+
+source /home/bmnars/spider_porject/vigenebio_spider/kw.sql;
+source /home/bmnars/spider_porject/vigenebio_spider/rs.sql;

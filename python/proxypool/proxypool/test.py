@@ -1,8 +1,5 @@
-import redis
+import re
+proxy =  '1.1.1.1:111'
+juege_proxy = re.search('(.*):', proxy).group(1)
 
-
-def a():
-    a = 'sdgsfsd'
-    return a
-
-print(eval('a()'))
+print(juege_proxy)
