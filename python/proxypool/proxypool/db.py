@@ -100,8 +100,8 @@ class RedisClient():
 
 if  __name__ == '__main__':
     conn = RedisClient()
-    result = conn.add('192.168.8.2:8888')
-    # result = conn.random()
+    # result = conn.add('192.168.8.2:8888')
+    result = conn.random()
     # result = conn.batch(0, 10)
     print(result)
     # help(RedisClient) 
