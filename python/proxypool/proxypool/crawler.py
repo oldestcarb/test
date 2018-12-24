@@ -36,7 +36,7 @@ class Crawler(object, metaclass = ProxyMataclass):
         """
         for i in range(1,4):
             url_full = 'https://www.xicidaili.com/wt/' + str(i)
-            with open(sys.path[0] + '/user-agents.txt', 'r' , encoding = 'utf-8') as f:
+            with open(sys.path[0] + 'proxypool/user-agents.txt', 'r' , encoding = 'utf-8') as f:
                 list_user_agent = f.readlines()
             user_agent = random.choice(list_user_agent).strip()
             headers = {'user-agent':user_agent}

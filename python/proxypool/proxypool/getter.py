@@ -1,6 +1,6 @@
-from db import RedisClient
-from crawler import Crawler
-from setting import *
+from proxypool.db import RedisClient
+from proxypool.crawler import Crawler
+from proxypool.setting import *
 import sys
 
 class Getter():

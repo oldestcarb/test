@@ -4,8 +4,8 @@ import time
 import json
 import sys
 import re
-from db import RedisClient
-from setting import *
+from proxypool.db import RedisClient
+from proxypool.setting import *
 try:
     from aiohttp import ClientError
 except:
