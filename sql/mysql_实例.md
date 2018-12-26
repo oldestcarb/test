@@ -19,7 +19,7 @@ create table _cs_bmnars_vigenebio_rs (
 );
 
 alter table _cs_bmnars_vigenebio_result add keyword varchar(50);
-alter table _cs_bmnars_vigenebio_keyword modify status bit not null default 0 ;
+alter table _cs_bmnars_vigenebio_keyword modify status varchar(5) not null default n ;
 
 drop table _cs_bmnars_vigenebio_result;
 alter table _cs_bmnars_vigenebio_keyword add isrun bit not null default 0 ;
@@ -34,3 +34,18 @@ mysqldump -u bmnars -p bmnars _cs_bmnars_vigenebio_rs > d:\rs.sql
 
 source /home/bmnars/spider_porject/vigenebio_spider/kw.sql;
 source /home/bmnars/spider_porject/vigenebio_spider/rs.sql;
+
+create table _cs_bmnars_vigenebio_result (
+    id int(11) not null auto_increment primary key,
+    Catalog_Number varchar(50),
+    Gene_Symbol varchar(50),
+    Species varchar(50),
+    Product_names varchar(50),
+    Description varchar(255),
+    Price varchar(50),
+    Delivery varchar(50),
+    update_time date,
+    keyword varchar(50)
+);
+
+alter table _cs_bmnars_vigenebio_keyword modify status int(5) not null default 0 ;
