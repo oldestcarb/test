@@ -1,3 +1,5 @@
+# -*- encoding:utf-8 -*-
+
 class PoolEmptyError(Exception):
     def __init__(self):
         super(PoolEmptyError, self).__init__()

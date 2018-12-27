@@ -1,3 +1,5 @@
+# -*- encoding:utf-8 -*-
+
 import redis
 from proxypool.error import PoolEmptyError
 from proxypool.setting import REDIS_HOST, REDIS_KEY, REDIS_PASSWORD, REDIS_PORT

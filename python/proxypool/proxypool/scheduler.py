@@ -1,3 +1,5 @@
+# -*- encoding:utf-8 -*-
+
 import time
 from multiprocessing import Process
 from proxypool.tester import Tester

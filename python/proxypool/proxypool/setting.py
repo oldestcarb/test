@@ -1,3 +1,5 @@
+# -*- encoding:utf-8 -*-
+
 # redis数据库地址
 REDIS_HOST = '127.0.0.1'
 
@@ -21,7 +23,7 @@ INITIAL_SCORE = 10
 VALID_STATUS_CODES = [200, 302]
 
 # 代理池数量界限
-POOL_UPPER_THRESHOLD = 10000
+POOL_UPPER_THRESHOLD = 500
 
 # 检查周期
 TESTER_CYCLE = 300
@@ -39,7 +41,7 @@ API_PORT = 5555
 
 # 开关
 TESTER_ENABLED = True
-GETTER_ENABLED = False
+GETTER_ENABLED = True
 API_ENABLED = True
 
 # 最大批测试量

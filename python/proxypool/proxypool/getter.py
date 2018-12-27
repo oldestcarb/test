@@ -1,3 +1,5 @@
+# -*- encoding:utf-8 -*-
+
 from proxypool.db import RedisClient
 from proxypool.crawler import Crawler
 from proxypool.setting import *
