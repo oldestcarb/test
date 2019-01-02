@@ -49,3 +49,11 @@ create table _cs_bmnars_vigenebio_result (
 );
 
 alter table _cs_bmnars_vigenebio_keyword modify status int(5) not null default 0 ;
+
+create table _cs_bmnars_vigenebio_keyword (
+    kw varchar(50) not null ,
+    update_time date,
+    status int(5) not null default 0,
+    isrun bit not null default 0,
+    id int(5) not null auto_increment primary key
+);  
