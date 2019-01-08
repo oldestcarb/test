@@ -14,7 +14,7 @@ REDIS_KEY = 'proxies'
 
 # 代理分数
 # 最大
-MAX_SCORE = 100
+MAX_SCORE = 50
 # 最小
 MIN_SCORE = 0
 # 新代理初始分数

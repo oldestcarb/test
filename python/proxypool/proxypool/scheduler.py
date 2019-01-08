@@ -24,7 +24,7 @@ class Scheduler():
 
     def schedule_getter(self, cycle=GETTER_CYCLE):
         """
-        定时测试代理
+        定时抓取代理
         """
         getter = Getter()
         while True:

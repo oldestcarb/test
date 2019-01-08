@@ -31,7 +31,9 @@ class Getter():
                 proxies = self.crawler.get_proxies(callback)
                 sys.stdout.flush()
                 for proxy in proxies:
-                    self.redis.add(proxy)
+                    if not self.is_over_threshold():
+                        self.redis.add(proxy)
+                        
 def main():
     mygetter = Getter()
     mygetter.run()
