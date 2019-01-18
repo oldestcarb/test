@@ -1,9 +1,6 @@
 # -*- encoding:utf-8 -*-
 
-import re
+from lxml import etree
 
-def a():
-    roxy =  '1.1.1.1:111'
-    uege_proxy = re.search('(.*):', proxy).group(1)
-    
-    rint(juege_proxy)
+html = etree.parse('C:/Users/CRAB/Desktop/2.html')
+print(html)

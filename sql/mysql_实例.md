@@ -57,3 +57,14 @@ create table _cs_bmnars_vigenebio_keyword (
     isrun bit not null default 0,
     id int(5) not null auto_increment primary key
 );  
+
+关于caching-sha2-password问题
+root用户登陆
+ALTER USER 'bmnars'@'localhost' IDENTIFIED BY 'vi93nwYV' PASSWORD EXPIRE NEVER;
+ALTER USER 'bmnars'@'localhost' IDENTIFIED WITH mysql_native_password BY 'vi93nwYV';
+FLUSH PRIVILEGES;
+alter user 'bmnars'@'localhost' identified by 'vi93nwYV';
+重启mysql服务,mysqld restart
+
+alter table _cs_bmnars_link_v2 drop id;
+alter table _cs_bmnars_link_v2  add primary key(source_url);
