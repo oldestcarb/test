@@ -68,3 +68,30 @@ alter user 'bmnars'@'localhost' identified by 'vi93nwYV';
 
 alter table _cs_bmnars_link_v2 drop id;
 alter table _cs_bmnars_link_v2  add primary key(source_url);
+
+create database gene_disease charset=utf8;
+
+CREATE TABLE gene (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(50) ,
+  update_time date);
+
+CREATE TABLE disease (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(50) ,
+  acronym varchar(11) ,
+  parents int(11),
+  update_time date);
+
+CREATE TABLE gd(
+  disease_id int(11),
+  gene_id int(11),
+  update_time date  
+);
+# 添加联合主键,然后添加外键
+ALTER TABLE gd ADD CONSTRAINT pk_re PRIMARY KEY(disease_id, gene_id);
+ALTER TABLE gd ADD CONSTRAINT fk_dis FOREIGN KEY(disease_id) REFERENCES disease(id);
+ALTER TABLE gd ADD CONSTRAINT fk_ge FOREIGN KEY(gene_id) REFERENCES gene(id);
+# 添加唯一约束
+ALTER TABLE gene ADD unique(name);
+ALTER TABLE disease ADD unique(name);
