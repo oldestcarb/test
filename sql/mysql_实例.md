@@ -1,3 +1,4 @@
+```
 create table _cs_bmnars_vigenebio_kw (
     kw varchar(50) not null ,
     update_time date,
@@ -95,3 +96,8 @@ ALTER TABLE gd ADD CONSTRAINT fk_ge FOREIGN KEY(gene_id) REFERENCES gene(id);
 # 添加唯一约束
 ALTER TABLE gene ADD unique(name);
 ALTER TABLE disease ADD unique(name);
+# 修改字段类型
+ALTER TABLE gene modify name varchar(255) ;
+ALTER TABLE disease modify name varchar(255) ;
+ALTER TABLE disease modify acronym varchar(50) ;
+```
