@@ -72,32 +72,50 @@ alter table _cs_bmnars_link_v2  add primary key(source_url);
 
 create database gene_disease charset=utf8;
 
-CREATE TABLE gene (
+CREATE TABLE gene_primary_uniprot (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name varchar(50) ,
+  name varchar(255) ,
   update_time date);
 
-CREATE TABLE disease (
+CREATE TABLE gene_synonym_uniprot (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name varchar(50) ,
-  acronym varchar(11) ,
+  name varchar(255) ,
+  update_time date,
+  primary_id int(11));
+
+CREATE TABLE disease_uniprot (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(255) ,
+  acronym varchar(50) ,
   parents int(11),
   update_time date);
 
-CREATE TABLE gd(
+CREATE TABLE gd_uniprot(
   disease_id int(11),
   gene_id int(11),
   update_time date  
 );
-# 添加联合主键,然后添加外键
-ALTER TABLE gd ADD CONSTRAINT pk_re PRIMARY KEY(disease_id, gene_id);
-ALTER TABLE gd ADD CONSTRAINT fk_dis FOREIGN KEY(disease_id) REFERENCES disease(id);
-ALTER TABLE gd ADD CONSTRAINT fk_ge FOREIGN KEY(gene_id) REFERENCES gene(id);
+
+# 先添加联合主键,然后添加外键
+ALTER TABLE gd_uniprot ADD CONSTRAINT pk_re PRIMARY KEY(disease_id, gene_id);
+ALTER TABLE gd_uniprot ADD CONSTRAINT fk_dis FOREIGN KEY(disease_id) REFERENCES disease_uniprot(id);
+ALTER TABLE gd_uniprot ADD CONSTRAINT fk_ge FOREIGN KEY(gene_id) REFERENCES gene_primary_uniprot(id);
 # 添加唯一约束
-ALTER TABLE gene ADD unique(name);
-ALTER TABLE disease ADD unique(name);
+ALTER TABLE gene_primary_uniprot ADD unique(name);
+ALTER TABLE disease_uniprot ADD unique(name);
+# 添加唯一约束
+ALTER TABLE gene_synonym_uniprot ADD unique(name);
+# 添加外键
+ALTER TABLE gene_synonym_uniprot ADD CONSTRAINT fk_pr FOREIGN KEY(primary_id) REFERENCES gene_primary_uniprot(id);
 # 修改字段类型
 ALTER TABLE gene modify name varchar(255) ;
 ALTER TABLE disease modify name varchar(255) ;
 ALTER TABLE disease modify acronym varchar(50) ;
+
+# 修改字段名
+ALTER  TABLE gene_synonym_uniprot CHANGE pid primary_id int(11);
 ```
+# 一对多内链接查询
+select * from gene_synonym_uniprot inner join  gene_primary_uniprot on gene_synonym_uniprot.primary_id = gene_primary_uniprot.id where gene_primary_uniprot.id = 100;
+# 多对多内链接查询
+select disease_uniprot.name,gene_primary_uniprot.name  from gd_uniprot inner join  gene_primary_uniprot on gd_uniprot.gene_id = gene_primary_uniprot.id inner join disease_uniprot on gd_uniprot.disease_id = disease_uniprot.id ;
