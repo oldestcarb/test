@@ -114,8 +114,50 @@ ALTER TABLE disease modify acronym varchar(50) ;
 
 # 修改字段名
 ALTER  TABLE gene_synonym_uniprot CHANGE pid primary_id int(11);
-```
+
 # 一对多内链接查询
 select * from gene_synonym_uniprot inner join  gene_primary_uniprot on gene_synonym_uniprot.primary_id = gene_primary_uniprot.id where gene_primary_uniprot.id = 100;
 # 多对多内链接查询
-select disease_uniprot.name,gene_primary_uniprot.name  from gd_uniprot inner join  gene_primary_uniprot on gd_uniprot.gene_id = gene_primary_uniprot.id inner join disease_uniprot on gd_uniprot.disease_id = disease_uniprot.id ;
+select disease_uniprot.name,gene_primary_uniprot.name  from gd_uniprot inner join  gene_primary_uniprot on gd_uniprot.gene_id = gene_primary_uniprot.id inner join disease_uniprot on gd_uniprot.disease_id = disease_uniprot.id where gd_uniprot.gene_id = 1587;
+
+select disease_uniprot.id,gene_primary_uniprot.name  from gd_uniprot inner join  gene_primary_uniprot on gd_uniprot.gene_id = gene_primary_uniprot.id inner join disease_uniprot on gd_uniprot.disease_id = disease_uniprot.id where disease_uniprot.name = 'Basal cell carcinoma';
+
+# 以disease_id分组并且disease_id对应的gene大于1
+select disease_uniprot.name,gene_primary_uniprot.name  from gd_uniprot inner join  gene_primary_uniprot on gd_uniprot.gene_id = gene_primary_uniprot.id inner join disease_uniprot on gd_uniprot.disease_id = disease_uniprot.id group by gd_uniprot.disease_id HAVING count(gd_uniprot.disease_id) >1;
+
+# 新建表
+CREATE TABLE disease_parent_kegg (
+  name varchar(255) not null PRIMARY KEY,
+  parent_name varchar(255) ,
+  update_time date);
+
+CREATE TABLE gene_primary_kegg (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(255) ,
+  update_time date);
+
+CREATE TABLE disease_kegg (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(255) ,
+  acronym varchar(50) ,
+  parent_name varchar(255) ,
+  update_time date);
+
+CREATE TABLE gd_kegg(
+  disease_id int(11),
+  gene_id int(11),
+  update_time date  
+);
+
+# 先添加联合主键,然后添加外键
+ALTER TABLE gd_kegg ADD CONSTRAINT pk_re PRIMARY KEY(disease_id, gene_id);
+ALTER TABLE gd_kegg ADD CONSTRAINT fk_dis_kegg FOREIGN KEY(disease_id) REFERENCES disease_kegg(id);
+ALTER TABLE gd_kegg ADD CONSTRAINT fk_ge_kegg FOREIGN KEY(gene_id) REFERENCES gene_primary_kegg(id);
+# 添加唯一约束
+ALTER TABLE gene_primary_kegg ADD unique(name);
+ALTER TABLE disease_kegg ADD unique(name);
+
+
+
+
+```
