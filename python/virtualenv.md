@@ -10,7 +10,7 @@ myproject $
 ```
 2. 创建一个独立的Python运行环境，命名为venv：
 ```python
-myproject $ virtualenv --no-site-packages venv
+myproject $ virtualenv virtualenv spider_env --no-site-packages venv
 # Using base prefix '/usr/local/.../Python.framework/Versions/3.4'
 # New python executable in venv/bin/python3.4
 # Also creating executable in venv/bin/python
@@ -22,13 +22,15 @@ myproject $ virtualenv --no-site-packages venv
 ```
 myproject $ source venv/bin/activate  
 (venv)myproject $  
+# windows下
+spider_env\Scripts\activate
 ```
 注意到命令提示符变了，有个(venv)前缀，表示当前环境是一个名为venv的Python环境。  
 
 在venv环境下，用pip安装的包都被安装到venv这个环境下，系统Python环境不受任何影响。也就是说，venv环境是专门针对myproject这个应用创建的。 
 
 退出当前的venv环境，使用deactivate命令：  
-```
+```python
 (venv)myproject $ deactivate 
 ```
 此时就回到了正常的环境，现在pip或python均是在系统Python环境下执行。  
