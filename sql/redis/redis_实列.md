@@ -38,7 +38,7 @@ db.zincrby(REDIS_KEY, -1, proxy)
 # 删除proxy元素
 db.zrem(REDIS_KEY, proxy)
 
-# 返回1-10之间的元素
+# 返回分数为1-10之间的元素
 db.zrangebyscore(REDIS_KEY, 1, 10)
 
 # 返回第1到100个元素，(按score从大到小排序)
