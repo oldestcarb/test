@@ -1,18 +1,12 @@
-# -*- encoding:utf-8 -*-
-
-from proxypool.scheduler import Scheduler
-import sys
-import io
-
-
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding = 'utf-8')
+# -*- coding:utf-8 -*-
+from scheduler import Scheduler
 
 def main():
     try:
-        s = Scheduler()
-        s.run()
+        my_scheduler = Scheduler()
+        my_scheduler.run()
     except:
         main()
-    
+        
 if __name__ == '__main__':
     main()

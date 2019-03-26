@@ -1,35 +1,39 @@
-# -*- encoding:utf-8 -*-
+# -*- coding:utf8 -*-
 
-import json
 import re
-import requests
 from lxml import etree
-import random
-import sys
 import time
+import sys
+import random
+import json
+import requests
 
-class ProxyMataclass(type):
+class ProxyMetaclass(type):
     def __new__(cls, name, bases, attrs):
         count = 0
+        # 存储以 crawl 开头的函数
         attrs['__CrawlFunc__'] = []
 
         for k, v in attrs.items():
             if 'crawl_' in k:
+                # 如果函数以 crawl 开头，则加入列表
                 attrs['__CrawlFunc__'].append(k)
                 count +=1
+        # 存储以 crawl 开头的函数的个数
         attrs['__CrawlFuncCount__'] = count
+
         return type.__new__(cls, name, bases, attrs)
 
-
-class Crawler(object, metaclass = ProxyMataclass):
+class Crawler(object, metaclass = ProxyMetaclass):
     def get_proxies(self, callback):
         """
-        :return: 返回爬取到的代理
+        :params callback: callback
+        :return proxies_list: 返回爬取到的代理，列表形式
         """
-        proxies = []
-        for proxy in eval("self.{}()".format(callback)):
-            proxies.append(proxy)
-        return proxies
+        proxies_list = []
+        for proxy in eval('self.{}()'.format(callback)):
+            proxies_list.append(proxy)
+        return proxies_list
 
     def crawl_xicidaili(self):
         """
@@ -38,7 +42,7 @@ class Crawler(object, metaclass = ProxyMataclass):
         """
         for i in range(1,4):
             url_full = 'https://www.xicidaili.com/wt/' + str(i)
-            with open(sys.path[0] + '/proxypool/user-agents.txt', 'r' , encoding = 'utf-8') as f:
+            with open(sys.path[0] + '/user-agents.txt', 'r' , encoding = 'utf-8') as f:
                 list_user_agent = f.readlines()
             user_agent = random.choice(list_user_agent).strip()
             headers = {'user-agent':user_agent}
@@ -70,7 +74,7 @@ class Crawler(object, metaclass = ProxyMataclass):
         """
         for i in range(1, 4):
             url_full = 'https://www.kuaidaili.com/free/inha/' + str(i)
-            with open(sys.path[0] + '/proxypool/user-agents.txt', 'r' , encoding = 'utf-8') as f:
+            with open(sys.path[0] + '/user-agents.txt', 'r' , encoding = 'utf-8') as f:
                 list_user_agent = f.readlines()
             user_agent = random.choice(list_user_agent).strip()
             headers = {'user-agent':user_agent}
@@ -99,7 +103,7 @@ class Crawler(object, metaclass = ProxyMataclass):
         """
         for i in range(1, 4):
             url_full = 'http://www.89ip.cn/index_' + str(i) + '.html'
-            with open(sys.path[0] + '/proxypool/user-agents.txt', 'r' , encoding = 'utf-8') as f:
+            with open(sys.path[0] + '/user-agents.txt', 'r' , encoding = 'utf-8') as f:
                 list_user_agent = f.readlines()
             user_agent = random.choice(list_user_agent).strip()
             headers = {'user-agent':user_agent}
@@ -120,3 +124,13 @@ class Crawler(object, metaclass = ProxyMataclass):
                         port_proxy = list_port_proxy[0].text
                         address_port = ip_proxy.strip()+':'+port_proxy.strip()
                         yield address_port
+
+def main():
+    crawler = Crawler()
+    a = []
+    for i in range(crawler.__CrawlFuncCount__):
+        b = crawler.get_proxies(crawler.__CrawlFunc__[i])
+        a.append(b)
+    print(a)
+if __name__ == '__main__':
+    main()
