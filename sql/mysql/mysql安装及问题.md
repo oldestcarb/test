@@ -57,11 +57,16 @@ grant all privileges on bmnars.* to bmnars@localhost;
 
 
 #### 关于caching-sha2-password问题
+
+Navicat连接 Mysql 8.0.11 出现1251- Client does not support authentication protocol 错误解决方法一样。
 root用户登陆
 ```mysql
-ALTER USER 'bmnars'@'localhost' IDENTIFIED BY 'vi93nwYV' PASSWORD EXPIRE NEVER;
-ALTER USER 'bmnars'@'localhost' IDENTIFIED WITH mysql_native_password BY 'vi93nwYV';
+# 修改加密规则
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;
+# 更新一下用户的密码 
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+# 刷新权限
 FLUSH PRIVILEGES;
-alter user 'bmnars'@'localhost' identified by 'vi93nwYV';
+alter user 'root'@'localhost' identified by 'root';
 # 重启mysql服务,mysqld restart
 ```
