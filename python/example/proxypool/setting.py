@@ -20,7 +20,7 @@ INITIAL_SCORE = 10
 PROXIES_THRESHOLD = 500
 
 # 测试代理是否有效的网址
-TEST_URL = 'https://weixin.sogou.com'
+TEST_URL = 'https://weixin.sogou.com/weixin?type=2&s_from=input&query=NBA'
 
 # 测试代理是否有效的返回码
 VALID_STATUS_CODES = [200]
