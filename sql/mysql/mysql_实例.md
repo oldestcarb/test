@@ -27,6 +27,15 @@ CREATE TABLE disease_kegg (
   acronym varchar(50) ,
   parent_name varchar(255) ,
   update_time date);
+
+create table articles (
+  id int(11) not null,
+  title varchar(255) not null,
+  content text,
+  date varchar(255),
+  wechat varchar(255),
+  nickname varchar(255)
+);
 ```    
 ##### 修改表结构
 ```
@@ -40,6 +49,8 @@ ALTER  TABLE gene_synonym_uniprot CHANGE pid primary_id int(11);
 ALTER TABLE gd_uniprot ADD CONSTRAINT pk_re PRIMARY KEY(disease_id, gene_id);
 ALTER TABLE gd_uniprot ADD CONSTRAINT fk_dis FOREIGN KEY(disease_id) REFERENCES disease_uniprot(id);
 ALTER TABLE gd_uniprot ADD CONSTRAINT fk_ge FOREIGN KEY(gene_id) REFERENCES gene_primary_uniprot(id);
+
+alter table articles add constraint pk_art primary key(id);
 ```
 ##### 添加唯一约束
 ```
