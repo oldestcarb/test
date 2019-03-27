@@ -1,35 +1,21 @@
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-import multiprocessing
-import time
+from requests import Request
+from requests import Session
 
-
-def process(num):
-    time.sleep(num)
-    print('Process:', num)
-
-
+class WeixinRequest(Request):
+    def __init__(self, url, method='GET', headers=None, timeout=5):
+        super(WeixinRequest, self).__init__(method, url, headers)
+        self.timeout = timeout
+        
 if __name__ == '__main__':
-    for i in range(5):
-        p = multiprocessing.Process(target=process, args=(i, ))
-        p.start()
-
-    print('CPU number:' + str(multiprocessing.cpu_count()))
-    for p in multiprocessing.active_children():
-        print('Child process name: ' + p.name + ' id: ' + str(p.pid))
-
-    print('Process Ended')
+    session = Session()
+    headers ={
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    }
+    url = 'https://www.baidu.com'
+    weixin = WeixinRequest(url=url)
+    print(session.headers)
+    session.headers.update(headers)
+    print(session.headers)
+    # response = session.send(weixin.prepare())
+    response = session.send(session.prepare_request(weixin))
+    print(response.request.headers)
