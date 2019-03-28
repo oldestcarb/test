@@ -30,3 +30,16 @@ def img_url_change(match):
 local_img_pattern = re.compile(r'<img.*?\ssrc="(.*?)".*?>{1}', re.I|re.S)
 article_content = local_img_pattern.sub(img_url_change, article_content)
 ```
+3. 以逗号分隔字符串,但忽略双引号内的逗号
+```python
+import re
+
+a = '11-BETA-HSD3,100174880,"Anemia, Hemolytic",MESH:D000743,,"Water Pollutants, Chemical",4.49,,22425172'
+b = re.split(r',\s*(?![^"]*\"\,)', a)
+print(len(b))
+print(b)
+```
+```python
+9
+['11-BETA-HSD3', '100174880', '"Anemia, Hemolytic"', 'MESH:D000743', '', '"Water Pollutants, Chemical"', '4.49', '', '22425172']
+```
