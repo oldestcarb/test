@@ -7,6 +7,7 @@ mysqld -remove
 2. my.ini(安装目录)
 ```
 [mysql]
+[mysql]
 # 设置mysql客户端默认字符集
 default-character-set=utf8 
 [mysqld]
@@ -22,6 +23,8 @@ max_connections=200
 character-set-server=utf8
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
+# mysql导入导出数据的路径，空表示任意
+secure_file_priv = ''
 
 
 ```
