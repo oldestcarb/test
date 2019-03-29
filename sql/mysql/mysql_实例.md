@@ -115,3 +115,12 @@ mysqldump -u bmnars -p bmnars _cs_bmnars_vigenebio_rs > d:\rs.sql
 mysql -uroot –p 数据库名 < ~/Desktop/备份文件.sql
 source /home/bmnars/spider_porject/vigenebio_spider/kw.sql;
 ```
+##### 导入csv数据
+```
+load data infile 'C:/Users/CRAB/Desktop/mim2gene.csv' 
+replace into table gene_primary_omim           
+fields terminated by ',' 
+optionally enclosed by '"' 
+lines terminated by '\r\n' 
+ignore 1 lines;
+```

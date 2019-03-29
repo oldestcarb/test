@@ -1,21 +1,28 @@
-from requests import Request
-from requests import Session
+from lxml import etree
 
-class WeixinRequest(Request):
-    def __init__(self, url, method='GET', headers=None, timeout=5):
-        super(WeixinRequest, self).__init__(method, url, headers)
-        self.timeout = timeout
-        
-if __name__ == '__main__':
-    session = Session()
-    headers ={
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
-    }
-    url = 'https://www.baidu.com'
-    weixin = WeixinRequest(url=url)
-    print(session.headers)
-    session.headers.update(headers)
-    print(session.headers)
-    # response = session.send(weixin.prepare())
-    response = session.send(session.prepare_request(weixin))
-    print(response.request.headers)
+a = """<div>
+    <ul class="1">
+        <li>1</li>
+        <li>12<a>bcd</a></li>
+        <li>123</li>
+        <li>1234</li>
+    </ul>
+    <ul class="2">
+        <li>2</li>
+        <li>22<a>bcd</a></li>
+        <li>223</li>
+        <li>2234</li>
+    </ul>
+</div>
+    """
+b = etree.HTML(a)
+c = b.xpath('//ul')[1].xpath('string(.)')
+print(c)
+# d = c.replace('\n','')
+# d = d.replace(' ','')
+# for i in c:
+#     print(i)
+# print(str(c),type(str(c)))
+
+# string text 区别
+# string两种方式 数量 结果类型
