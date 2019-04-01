@@ -124,3 +124,30 @@ optionally enclosed by '"'
 lines terminated by '\r\n' 
 ignore 1 lines;
 ```
+###### 基本语法
+```
+load data [low_priority] [local] infile 'file_name txt' [replace | ignore]
+into table tbl_name
+[character set gbk]
+[fields
+[terminated by't']
+[OPTIONALLY] enclosed by '']
+[escaped by'\' ]]
+[lines terminated by'\n']
+[ignore number lines]
+[(col_name, )]
+```
+1. `replace` 和 `ignore` 。replace，新行将代替有相同的唯一键值的现有行。ignore，跳过有唯一键的现有行的重复行的输入。如果你不指定任何一个选项，当找到重复键时，出现一个错误，并且文本文件的余下部分被忽略。
+2.  `erminated by`描述字段的分隔符，默认情况下是tab字符（`\t`） 。`enclosed by`描述的是字段的括起字符，就是说字段中如果有引号，就当做是字段的一部分。 语法中还有一个是 `escaped by`，它描述的是转义字符。默认的是反斜杠（`backslash：\ `）
+3. `lines terminated by`是对每行进行分割，这里要注意一个问题，如果csv文件是在windows下生成，那分割用 `\r\n`，linux下用` \n`。
+4. `ignore 1 lines` 是忽略第一行，因为第一行往往是字段名，后边括号中有个字段很特别 `@name`，它是说如果csv文件中有个字段我不想插进去，那就把对应字段名变成`@name`.
+
+##### 导出csv数据
+```
+select * from gene_primary_omim
+into outfile 'C:/Users/CRAB/Desktop/ene.csv'
+fields terminated by ','
+optionally enclosed by '"'
+escaped by '"'
+lines terminated by '\n';
+```
