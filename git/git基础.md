@@ -10,6 +10,12 @@ git config --global user.name "oldestcrab"
 
 git config --global user.email "oldestcrab@gmail.com"
 
+# 查看远程库信息
+git remote
+
+# 删除远程库origin信息
+git remote remove origin
+
 # 已有的本地仓库与远程库关联
 git remote add origin git@github.com:oldestcrab/mybooks.git
 
@@ -98,7 +104,7 @@ git branch -D dev
 # 推送分支dev
 git push origin dev
 
-# 在本地创建和远程分支对应的分支，本地和远程分支的名称最好一致
+# 基于远程分支创建本地分支，本地和远程分支的名称最好一致
 git checkout -b dev origin/dev
   
 # 建立本地分支和远程分支的关联
