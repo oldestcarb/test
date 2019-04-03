@@ -3,6 +3,8 @@
 #### 基础
 
 ```git
+# 初始化git仓库
+git init
 
 git config --global user.name "oldestcrab"
 
