@@ -22,9 +22,11 @@ git remote add origin git@github.com:oldestcrab/mybooks.git
 # 把当前分支master推送到远程master，-u参数，把本地的master分支和远程的master分支关联起来，后续可不用-u参数
 git push -u origin master
 
+# 拉去远程仓库到master分支
 git pull origin master
 
-git clone git@github.com:oldestcrab/mybooks.git
+# 从远程库拉取仓库到本地
+git clone git@github.com:oldestcrab/by_scrapy.git
 
 git status
 
@@ -41,7 +43,7 @@ git diff README.md
 git checkout a.md
 
 # 版本回退,HEAD表示当前版本,上一个版本就是HEAD^，上上一个版本就是HEAD^^
-git reset --hard HEAD^
+git reset --hard HEAD
 
 # 通过commit id回退
 git reset --hard 1094a
