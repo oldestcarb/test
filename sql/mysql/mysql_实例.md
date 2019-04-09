@@ -52,6 +52,10 @@ ALTER TABLE gd_uniprot ADD CONSTRAINT fk_ge FOREIGN KEY(gene_id) REFERENCES gene
 
 alter table articles add constraint pk_art primary key(id);
 ```
+##### 查询外键
+```
+SELECT * FROM information_schema.KEY_COLUMN_USAGE where constraint_name='fk_ge_ctd_v2';
+```
 ##### 添加唯一约束
 ```
 ALTER TABLE gene_primary_uniprot ADD unique(name);
