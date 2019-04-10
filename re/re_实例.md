@@ -43,3 +43,15 @@ print(b)
 9
 ['11-BETA-HSD3', '100174880', '"Anemia, Hemolytic"', 'MESH:D000743', '', '"Water Pollutants, Chemical"', '4.49', '', '22425172']
 ```
+
+4. 去掉url最后的`/`
+```python
+import re
+
+url = 'https://www.genecopoeia.com/order/'
+real_url = re.sub(r'\/$', '', url)
+print(real_url)
+```
+```
+https://www.genecopoeia.com/order
+```
