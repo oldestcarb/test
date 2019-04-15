@@ -234,3 +234,46 @@ CREATE TABLE scan_website_v2 (
   is_parse int(2),
   update_time date);
 ```
+#### 2019-04-12
+```
+CREATE TABLE scan_website_v3 (
+  url varchar(255) PRIMARY KEY,
+  code int(11),
+  response_url varchar(255),
+  update_time date);
+```
+#### 2019-04-12
+```
+select count(*) from gene_primary_uniprot;
+select count(*) from gene_primary_ctd_v2;
+select count(*) from gene_primary_omim;
+select count(*) from gene_primary_curated_disgenet;
+select count(*) from gene_primary_kegg;
+
+create table gene_all(
+  id int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  name varchar(255),
+  update_time date
+);
+
+alter table gene_all add unique(name);
+
+insert ignore into gene_all(name, '2019-04-15') select name from gene_primary_ctd_v2;
+
+insert ignore into gene_all(name) select name from gene_primary_uniprot;
+
+
+CREATE TABLE disease_all (
+  id int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  mesh_id varchar(50) ,
+  name varchar(255) ,
+  acronym varchar(50) ,
+  parent varchar(255) ,
+  update_time date);
+
+
+insert ignore into disease_all(mesh_id, name, acronym, parent) 
+select id, name, acronym, parent_name
+from disease_ctd_v2;
+```
+

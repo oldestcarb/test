@@ -1,5 +1,4 @@
 import re
-
-url = 'https://www.genecopoeia.com/order/'
-real_url = re.sub(r'\/$', '', url)
-print(real_url)
+real_url = '/html/question/201904/408542.shtml'
+a = re.search(r'question\/\d+\/\d+\.shtml', real_url)
+print(a)
