@@ -37,6 +37,10 @@ create table articles (
   nickname varchar(255)
 );
 ```    
+##### 修改表名
+```
+alter table  gene_all_v2 RENAME to gene_all;
+```
 ##### 修改表结构
 ```
 alter table 表名 add|change|drop 列名 类型
@@ -66,6 +70,11 @@ ALTER TABLE disease_uniprot ADD unique(name);
 insert into students values(0,'郭靖',1,'1789-1-1',0);
 insert into students(name) values('黄蓉');
 insert into students(name) values('杨过'),('小龙女'),('郭襄');
+```
+##### 插入从表disease_ctd_v2查询到的数据到表disease_all中(唯一键已存在则更新)
+```
+INSERT into disease_all(mesh_id, NAME) 
+select id,name from disease_ctd_v2 on duplicate key update mesh_id = disease_ctd_v2.id;
 ```
 ##### 更新数据
 ```

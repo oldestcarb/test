@@ -242,7 +242,7 @@ CREATE TABLE scan_website_v3 (
   response_url varchar(255),
   update_time date);
 ```
-#### 2019-04-12
+#### 2019-04-14
 ```
 select count(*) from gene_primary_uniprot;
 select count(*) from gene_primary_ctd_v2;
@@ -270,10 +270,29 @@ CREATE TABLE disease_all (
   acronym varchar(50) ,
   parent varchar(255) ,
   update_time date);
-
+alter table disease_all add unique(name);
 
 insert ignore into disease_all(mesh_id, name, acronym, parent) 
 select id, name, acronym, parent_name
 from disease_ctd_v2;
 ```
 
+#### 2019-04-14
+```
+alter table disease_all add source VARCHAR(20);
+
+create table gene_all_v2(
+  id int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  name varchar(255),
+  update_time date,
+  source VARCHAR(20)
+);
+
+alter table gene_all_v2 add unique(name);
+
+update gene_all set update_time='2019-04-16';
+update disease_all set update_time='2019-04-16';  
+
+INSERT into disease_all(mesh_id, NAME) 
+select id,name from disease_ctd_v2 on duplicate key update mesh_id = disease_ctd_v2.id;
+```
