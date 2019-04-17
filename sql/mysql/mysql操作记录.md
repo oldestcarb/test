@@ -277,7 +277,7 @@ select id, name, acronym, parent_name
 from disease_ctd_v2;
 ```
 
-#### 2019-04-14
+#### 2019-04-16
 ```
 alter table disease_all add source VARCHAR(20);
 
@@ -295,4 +295,16 @@ update disease_all set update_time='2019-04-16';
 
 INSERT into disease_all(mesh_id, NAME) 
 select id,name from disease_ctd_v2 on duplicate key update mesh_id = disease_ctd_v2.id;
+```
+
+#### 2019-04-16
+```
+create table aagatlas_disease(
+    GeneSymbol varchar(255),
+    Disease varchar(255),
+    PubMed_ID varchar(255),
+    Sentence varchar(5000),
+    update_time date
+);
+
 ```
