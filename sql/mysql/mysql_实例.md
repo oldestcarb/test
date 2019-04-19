@@ -126,7 +126,10 @@ mysqldump -u bmnars -p bmnars _cs_bmnars_vigenebio_rs > d:\rs.sql
 ##### 恢复
 ```
 mysql -uroot –p 数据库名 < ~/Desktop/备份文件.sql
+mysql -u bmnars -p gene_disease < ./aagatlas_gene.sql 
+
 source /home/bmnars/spider_porject/vigenebio_spider/kw.sql;
+
 ```
 ##### 导入csv数据
 ```

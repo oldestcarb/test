@@ -297,7 +297,7 @@ INSERT into disease_all(mesh_id, NAME)
 select id,name from disease_ctd_v2 on duplicate key update mesh_id = disease_ctd_v2.id;
 ```
 
-#### 2019-04-16
+#### 2019-04-17
 ```
 create table aagatlas_disease(
     GeneSymbol varchar(255),
@@ -307,4 +307,33 @@ create table aagatlas_disease(
     update_time date
 );
 
+```
+#### 2019-04-18
+```
+create table aagatlas_disease_v2(
+    GeneSymbol varchar(255),
+    Disease varchar(255),
+    PubMed_ID varchar(255),
+    Sentence varchar(5000),
+    update_time date
+);
+
+create table aagatlas_gene(
+    GeneSymbol varchar(255),
+    Disease varchar(255),
+    PubMed_ID varchar(255),
+    Sentence varchar(5000),
+    update_time date
+);
+
+```
+#### 2019-04-19
+```
+alter table  `aagatlas_disease_v2`  RENAME aagatlas_disease;
+
+INSERT into _cs_disease_dict(id, name, alias)
+SELECT id, name, acronym FROM `disease_all`;
+
+alter table `aagatlas_disease` add id int(11) not null auto_increment primary key;
+alter table `aagatlas_gene` add id int(11) not null auto_increment primary key;
 ```
