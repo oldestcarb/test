@@ -337,3 +337,26 @@ SELECT id, name, acronym FROM `disease_all`;
 alter table `aagatlas_disease` add id int(11) not null auto_increment primary key;
 alter table `aagatlas_gene` add id int(11) not null auto_increment primary key;
 ```
+#### 2019-04-22
+```
+insert into _cs_disease_map(dis_id, gene_symbol) VALUES('2857', "A1BG")  on DUPLICATE key update source = CONCAT(source, ',abc');
+
+update _cs_disease_map set source = 'ctd' where source = 'ctd ,ctd';
+
+mysqldump -u bmnars -p gene_disease gene_primary_curated_disgenet > ./gene_primary_curated_disgenet.sql
+mysqldump -u bmnars -p gene_disease disease_curated_disgenet > ./disease_curated_disgenet.sql
+mysqldump -u bmnars -p gene_disease gd_curated_disgenet > ./gd_curated_disgenet.sql
+
+mysql -u bmnars -p gene_disease < ./gene_primary_curated_disgenet.sql
+mysql -u bmnars -p gene_disease < ./gd_curated_disgenet.sql
+mysql -u bmnars -p gene_disease < ./disease_curated_disgenet.sql
+
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+mysqldump -u bmnars -p gene_disease gene_all > ./gene_all.sql
+
+create table CTD_diseases(
+    DiseaseName varchar(255) primary key,
+    DiseaseID varchar(255),
+    ParentIDs varchar(2000)
+);
+```

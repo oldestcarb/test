@@ -76,6 +76,10 @@ insert into students(name) values('杨过'),('小龙女'),('郭襄');
 INSERT into disease_all(mesh_id, NAME) 
 select id,name from disease_ctd_v2 on duplicate key update mesh_id = disease_ctd_v2.id;
 ```
+##### 插入数据，唯一键已存在则更新，某个字段值追加
+```
+insert into _cs_disease_map(dis_id, gene_symbol) VALUES('2857', "A1BG")  on DUPLICATE key update source = CONCAT(source, ',abc');
+```
 ##### 更新数据
 ```
 update students set birthday = '1790-1-2' where id = 2;
