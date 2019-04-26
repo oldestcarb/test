@@ -360,3 +360,72 @@ create table CTD_diseases(
     ParentIDs varchar(2000)
 );
 ```
+#### 2019-04-23
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+mysqldump -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_dict.sql
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+```
+#### 2019-04-24
+```
+CREATE TABLE `_cs_disease_list_v2` (
+  `dis_id` varchar(32) NOT NULL DEFAULT '',
+  `parent_id` varchar(32) NOT NULL DEFAULT '',
+  `leaf` enum('1','0') DEFAULT '0',
+  TreeNumbers varchar(1000),
+  ParentTreeNumbers varchar(1000),
+  PRIMARY KEY (`dis_id`,`parent_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+create table CTD_diseases_v2(
+    DiseaseName varchar(255) primary key,
+    DiseaseID varchar(255),
+    ParentIDs varchar(2000),
+    TreeNumbers varchar(1000),
+    ParentTreeNumbers varchar(1000)
+);
+
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_dict.sql
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+```
+#### 2019-04-25
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_dict.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
+vi93nwYV
+
+drop table `_cs_disease_list`;
+drop table `_cs_disease_dict`;
+drop table `_cs_disease_map`;
+
+insert ignore into  `disease_all_copy`(name) 
+SELECT DiseaseName from ctd_diseases_v2;
+```
+#### 2019-04-26
+```
+mysqldump -u bmnars -p gene_disease CTD_diseases > ./CTD_diseases.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease disease_ctd_v2 > ./disease_ctd_v2.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./CTD_diseases.sql
+mysql -u bmnars -p gene_disease  < ./disease_ctd_v2.sql
+```
