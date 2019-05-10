@@ -1,48 +1,21 @@
-# -*- encoding:utf-8 -*-
+from urllib.parse import urlencode, parse_qs, quote, unquote
 
-import re
-import time
-import requests
-from lxml import etree
-from requests import ConnectionError
-import sys
-import os
-import random
-from random import shuffle
-import pymysql
-import json
-import threading
-from queue import Queue 
+data = {
+    'q':'知道',
+    'name':'aa'
+}
+url = 'https://www.baidu.com?'
 
-    
-def get_kw(kw, judge):
-    """
-    从表_cs_bmnars_vigenebio_keyword中获取查询关键字
-    """
-    # 数据库连接
-    db = pymysql.connect(host='localhost', user='bmnars', password='vi93nwYV', port=3306, db='bmnars')
-    cursor = db.cursor()
-    # 更新时间
-    update_time = time.strftime('%Y-%m-%d',time.localtime())
-    # print('judge:\t', type(judge), judge)
+# urlencode() 方法将其序列化为 URL 标准 GET 请求参数
+encode_data = urlencode(data)
 
-    if judge == 0:
-        # 查询状态未更新的关键字，爬取之后状态改为 y
-        sql = 'select * from _cs_bmnars_vigenebio_rs limit 10;'
-        print(sql)
-        try:
-            cursor.execute(sql)
-            # 获取一行
-            row = cursor.fetchone()
-            print(row)
-            return row
-        except:
-            print('get kw error!')
-        finally:
-            cursor.close()
-            db.close()
+print(url + encode_data)
+# https://www.baidu.com?q=%E7%9F%A5%E9%81%93&name=aa
 
-b = get_kw(1,0)
-print(type(b))
-with open(sys.path[0] + '/a.txt', 'a', encoding = 'utf-8') as f:
-    f.write(str(b))
+print(parse_qs(encode_data))
+# {'q': ['知道'], 'name': ['aa']}
+
+# 将内容转化为 URL 编码的格式
+print(quote('知道'))
+# %E7%9F%A5%E9%81%93
+print(unquote(r'%E7%9F%A5%E9%81%93'))

@@ -429,3 +429,84 @@ vi93nwYV
 mysql -u bmnars -p gene_disease  < ./CTD_diseases.sql
 mysql -u bmnars -p gene_disease  < ./disease_ctd_v2.sql
 ```
+#### 2019-04-28
+```
+create table _cs_disease_gene_info(
+  tax_id int(11),
+  GeneID int(11) primary key,
+  Symbol varchar(32),
+  LocusTag varchar(32),
+  Synonyms varchar(255),
+  dbXrefs varchar(255),
+  chromosome varchar(32),
+  map_location varchar(40),
+  description varchar(255),
+  type_of_gene varchar(32),
+  Symbol_from_nomenclature_authority varchar(40),
+  Full_name_from_nomenclature_authority varchar(255),
+  Nomenclature_status varchar(32),
+  Other_designations text,
+  Modification_date varchar(32),
+  Feature_type text
+)
+
+mysqldump -u bmnars -p gene_disease _cs_disease_gene_info > ./_cs_disease_gene_info.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_gene_info.sql
+```
+#### 2019-04-29
+```
+create database crispr charset='utf8';
+create table equipment(
+  id int(11) auto_increment primary key,
+  equipment text,
+  title varchar(255),
+  update_time date
+)
+
+create table materials_and_reagents(
+  id int(11) auto_increment primary key,
+  materials_and_reagents text,
+  title varchar(255),
+  update_time date
+)
+
+grant all privileges on crispr.* to bmnars@localhost;
+```
+
+#### 2019-05-07
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+```
+#### 2019-05-09
+```
+mysqldump -u bmnars -p crispr materials_and_reagents > ./materials_and_reagents.sql
+vi93nwYV
+mysqldump -u bmnars -p crispr equipment > ./equipment.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./materials_and_reagents.sql
+mysql -u bmnars -p gene_disease  < ./equipment.sql
+
+
+CREATE TABLE `aagatlas_list_tmp` (
+  `dis_id` varchar(255) NOT NULL DEFAULT '',
+  `parent_id` varchar(255) NOT NULL DEFAULT '',
+  `leaf` enum('1','0') DEFAULT '0',
+  PRIMARY KEY (`dis_id`,`parent_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+mysqldump -u bmnars -p gene_disease _cs_disease_list_all > ./_cs_disease_list_all.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list_all.sql
+
+CREATE TABLE `aagatlas_list_tmp` (
+  `dis_id` varchar(255) NOT NULL DEFAULT '',
+  `parent_id` varchar(255) NOT NULL DEFAULT '',
+  `leaf` enum('1','0') DEFAULT '0',
+	id int(11) primary key auto_increment
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
