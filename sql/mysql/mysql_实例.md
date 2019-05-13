@@ -108,6 +108,14 @@ select disease_uniprot.name,gene_primary_uniprot.name  from gd_uniprot inner joi
 # 以disease_id分组并且disease_id对应的gene大于1
 select gd_kegg.disease_id,disease_kegg.name  from gd_kegg inner join  gene_primary_kegg on gd_kegg.gene_id = gene_primary_kegg.id inner join disease_kegg on gd_kegg.disease_id = disease_kegg.id group by gd_kegg.disease_id having count(gd_kegg.gene_id)>1;
 ```
+
+##### 查询（去重）
+```
+SELECT gene_symbol FROM _cs_disease_map group by gene_symbol;
+
+select DISTINCT gene_symbol FROM _cs_disease_map;
+```
+
 ##### 聚合
 ```
 select count(*) from students where isdelete = 1;
