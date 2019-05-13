@@ -1,6 +1,7 @@
 #### MySQL日常操作记录
 
 
+
 ##### 创建数据库
 ```
 create database bmnars charset=utf8;

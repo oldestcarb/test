@@ -510,3 +510,18 @@ CREATE TABLE `aagatlas_list_tmp` (
 	id int(11) primary key auto_increment
   
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+```
+#### 2019-05-13
+```
+create table pmc_crispr(
+  id int(11) auto_increment primary key,
+  title varchar(255),
+  content text
+)
+
+mysqldump -u bmnars -p crispr pmc_crispr > ./pmc_crispr.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./pmc_crispr.sql
+vi93nwYV
+
+```
