@@ -12,7 +12,6 @@ lxml 的 iterparse 方法是 ElementTree API 的扩展。iterparse 为所选的�
 # -*- coding:utf-8 -*-
 
 from lxml import etree
-import pymysql
 import time
 
 def fast_iter(context, func, *args, **kwargs):
