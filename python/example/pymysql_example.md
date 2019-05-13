@@ -25,6 +25,7 @@ except:
     print('Failed')
     db.rollback()
 finally:
+    cursor.close()
     db.close()
 ```
 更新数据
