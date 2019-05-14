@@ -525,3 +525,17 @@ mysql -u bmnars -p gene_disease  < ./pmc_crispr.sql
 vi93nwYV
 
 ```
+#### 2019-05-14
+```
+create table gene_symbol_correct(
+  gene varchar(64) primary key,
+  info_geneid int(11) ,
+  info_symbol varchar(32),
+  info_synonyms varchar(255),
+  is_true int(2)
+)
+
+alter table gene_symbol_correct change is_true source varchar(32);
+update gene_symbol_correct set source = 'symbol' where source ='1';
+update gene_symbol_correct set source = 'synonyms' where source ='0';
+```
