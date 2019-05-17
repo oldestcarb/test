@@ -539,3 +539,29 @@ alter table gene_symbol_correct change is_true source varchar(32);
 update gene_symbol_correct set source = 'symbol' where source ='1';
 update gene_symbol_correct set source = 'synonyms' where source ='0';
 ```
+
+#### 2019-05-15
+```
+alter table pmc_crispr add abstract text;
+alter table pmc_crispr change content content MEDIUMTEXT;
+
+mysqldump -u bmnars -p crispr pmc_crispr > ./pmc_crispr.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./pmc_crispr.sql
+vi93nwYV
+
+```
+
+#### 2019-05-17
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
+vi93nwYV
+
+alter table _cs_disease_map add type int(2);
+
+alter table _cs_disease_map drop primary key;
+
+select distinct dis_id, gene_symbol, gene_id from _cs_disease_map where type =1;
+```
