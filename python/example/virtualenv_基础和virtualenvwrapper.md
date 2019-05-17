@@ -1,3 +1,4 @@
+#### 安装virtualenv
 ```python
 pip3 install virtualenv
 ```
@@ -38,3 +39,27 @@ spider_env\Scripts\activate
 完全可以针对每个应用创建独立的Python运行环境，这样就可以对每个应用的Python环境进行隔离。  
 
 virtualenv是如何创建“独立”的Python运行环境的呢？原理很简单，就是把系统Python复制一份到virtualenv的环境，用命令source venv/bin/activate进入一个virtualenv环境时，virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境。  
+
+#### 安装virtualenv
+```python
+# 依赖 virtualenv
+pip3 install virtualenvwrapper
+```
+1. win10中，添加系统环境变量 WORKON,指向 path/dir  (自己想要的虚拟环境目录位置)  
+```python
+# 变量名
+WORKON_HOME
+# 变量值
+D:\program\program_essential\python36_virtualenv_home  
+```
+2. 使用
+```python
+# 创建一个干净的虚拟环境
+mkvirtualenv my_spider
+# 查看环境 
+workon
+# 进入/切换环境
+workon my_spider
+# 删除环境
+rmvirtualenv my_spider
+```
