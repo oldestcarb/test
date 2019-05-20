@@ -565,3 +565,22 @@ alter table _cs_disease_map drop primary key;
 
 select distinct dis_id, gene_symbol, gene_id from _cs_disease_map where type =1;
 ```
+
+#### 2019-05-17
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_map_1 > ./_cs_disease_map_1.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_map_2 > ./_cs_disease_map_2.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map_1.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map_2.sql
+vi93nwYV
+
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
+vi93nwYV
+```
