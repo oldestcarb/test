@@ -43,7 +43,7 @@ virtualenv是如何创建“独立”的Python运行环境的呢？原理很简�
 #### 安装virtualenvwrapper
 ```python
 # 依赖 virtualenv
-pip3 install virtualenvwrapper
+pip3 install virtualenvwrapper-win
 ```
 1. win10中，添加系统环境变量 WORKON,指向 path/dir  (自己想要的虚拟环境目录位置)  
 ```python
