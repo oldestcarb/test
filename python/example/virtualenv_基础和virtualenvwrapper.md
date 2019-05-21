@@ -40,7 +40,7 @@ spider_env\Scripts\activate
 
 virtualenv是如何创建“独立”的Python运行环境的呢？原理很简单，就是把系统Python复制一份到virtualenv的环境，用命令source venv/bin/activate进入一个virtualenv环境时，virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境。  
 
-#### 安装virtualenv
+#### 安装virtualenvwrapper
 ```python
 # 依赖 virtualenv
 pip3 install virtualenvwrapper
