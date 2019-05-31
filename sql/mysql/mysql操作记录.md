@@ -584,3 +584,65 @@ vi93nwYV
 mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
 vi93nwYV
 ```
+
+#### 2019-05-24
+```
+SELECT * FROM `aagatlas_disease` where Disease like   "%systemic lupus erythematosus%";
+SELECT * FROM `aagatlas_disease` where Disease like   "%type 1 diabetes mellitus%";
+
+SELECT * FROM `aagatlas_disease` where Disease like   "%Rasmussen encephalitis%";
+SELECT * FROM `aagatlas_disease` where Disease like   "%Systemic lupus erythematosus%";
+SELECT * FROM `aagatlas_disease` where Disease like   "%Behcet's disease%";
+SELECT * FROM `aagatlas_disease` where Disease like   "%Hashimoto's encephalopathy%";
+SELECT * FROM `aagatlas_disease` where Disease like   "%Autoimmune limbic encephalitis%";
+SELECT * FROM `aagatlas_disease` where Disease like   "%Sydenham's chorea%";
+
+
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_dict.sql
+vi93nwYV
+```
+
+#### 2019-05-28
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+vi93nwYV
+
+CREATE TABLE array_list_new (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  a varchar(32) ,
+  d varchar(32) ,
+  gene_symbol varchar(255),
+  disease_name varchar(255),
+  disease_id varchar(32),
+  disease_zh_cn varchar(255)
+);
+```
+#### 2019-05-31
+```
+CREATE TABLE disease_annotations (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  Gene_ID varchar(255),
+  Gene_Symbol varchar(255),
+  Species varchar(255),
+  Genetic_Entity_ID varchar(255),
+  Genetic_Entity_Symbol varchar(255),
+  Genetic_Entity_Type varchar(255),
+  Association_Type varchar(255),
+  Disease_ID varchar(255),
+  Disease_Name varchar(255),
+  Evidence_Code varchar(255),
+  Source varchar(255),
+  Refer text
+);
+
+```
