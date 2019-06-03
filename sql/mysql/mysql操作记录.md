@@ -646,3 +646,27 @@ CREATE TABLE disease_annotations (
 );
 
 ```
+
+#### 2019-06-03
+```
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_dict.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list.sql
+vi93nwYV
+
+mysqldump -u bmnars -p gene_disease disease_annotations > ./disease_annotations.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease  < ./disease_annotations.sql
+vi93nwYV
+```
