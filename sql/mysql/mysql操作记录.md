@@ -670,3 +670,50 @@ vi93nwYV
 mysql -u bmnars -p gene_disease  < ./disease_annotations.sql
 vi93nwYV
 ```
+#### 2019-06-12
+```
+grant all privileges on gene_disease_all.* to bmnars@localhost;
+
+mysqldump -u bmnars -p gene_disease _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_dict > ./_cs_disease_dict.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_list > ./_cs_disease_list.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_map.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_dict.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_list.sql
+vi93nwYV
+
+mysqldump -u bmnars -p gene_disease disease_ctd > ./disease_ctd.sql
+mysqldump -u bmnars -p gene_disease gd_ctd > ./gd_ctd.sql
+mysqldump -u bmnars -p gene_disease gene_primary_ctd > ./gene_primary_ctd.sql
+
+mysql -u bmnars -p gene_disease_all  < ./disease_ctd.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease_all  < ./gd_ctd.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease_all  < ./gene_primary_ctd.sql
+vi93nwYV
+
+mysqldump -u bmnars -p gene_disease _cs_disease_list_all > ./_cs_disease_list_all.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_list_all.sql
+vi93nwYV
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_dict_rev1.sql
+vi93nwYV
+
+
+CREATE TABLE _cs_gene (
+  `id` varchar(32) NOT NULL DEFAULT '',
+  `name` varchar(255) DEFAULT NULL,
+  `zh_cn` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+```
