@@ -54,7 +54,8 @@ create user 'bmnars'@'localhost' identified by 'vi93nwYV';
 # 给用户授权
 # grant all privileges on 想授权的数据库.* to 'user1'@'%';
 # all 可以替换为 select,delete,update,create,drop
-grant all privileges on bmnars.* to bmnars@localhost;
+grant all privileges on gene_disease_all.* to bmnars@'%';
+grant all privileges on bmnars.* to bmnars@localhost;(仅限本地)
 ```
 
 

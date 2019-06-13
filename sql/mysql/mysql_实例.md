@@ -180,3 +180,36 @@ optionally enclosed by '"'
 escaped by '"'
 lines terminated by '\n';
 ```
+
+##### 备份数据库
+```
+# 恢复时无需指定数据库
+mysqldump –u bmnars –p  --databases gene_disease_all > gene_disease_all.sql  
+# 恢复
+mysql -u bmnars -p < ./gene_disease_all.sql
+
+# 恢复时需要指定数据库
+mysqldump –u bmnars –p   gene_disease_all > gene_disease_all.sql 
+# 恢复
+mysqladmin –u 用户名 –p create 数据库名     //创建数据库
+mysql -u root -p gene_disease_all < ./gene_disease_all.sql
+```
+
+##### 新建用户
+```
+# 可远程访问
+create user bmnars@'%' identified by 'vi93nwYV'
+# 只能本地访问
+create user bmnars@'localhost' identified by 'vi93nwYV'
+```
+
+##### 删除用户
+```
+drop user bmnars@'localhost';
+```
+##### 用户授权
+```
+# 某个数据库权限
+GRANT ALL PRIVILEGES ON gene_disease.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
+# 所有权限
+GRANT ALL PRIVILEGES ON *.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";

@@ -717,3 +717,17 @@ CREATE TABLE _cs_gene (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
+#### 2019-06-13
+```
+create database gene_disease_all charset='utf8';
+
+grant all privileges on gene_disease_all.* to bmnars@'%' IDENTIFIED BY "vi93nwYV";;
+
+GRANT ALL PRIVILEGES ON bmnars.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
+
+GRANT ALL PRIVILEGES ON gene_disease.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
+
+drop user bmnars@'%';
+drop user bmnars@'localhost';
+create user bmnars@'%' identified by 'vi93nwYV'
+```
