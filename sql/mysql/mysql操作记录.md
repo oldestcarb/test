@@ -731,3 +731,9 @@ drop user bmnars@'%';
 drop user bmnars@'localhost';
 create user bmnars@'%' identified by 'vi93nwYV'
 ```
+#### 2019-06-14
+```
+mysqldump -u bmnars -p gene_disease_all _cs_disease_map > ./_cs_disease_map.sql
+
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_map.sql
+```

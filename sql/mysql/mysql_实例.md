@@ -184,7 +184,7 @@ lines terminated by '\n';
 ##### 备份数据库
 ```
 # 恢复时无需指定数据库
-mysqldump –u bmnars –p  --databases gene_disease_all > gene_disease_all.sql  
+mysqldump -u bmnars -p  --databases gene_disease_all > gene_disease_all.sql  
 # 恢复
 mysql -u bmnars -p < ./gene_disease_all.sql
 
