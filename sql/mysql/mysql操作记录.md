@@ -737,3 +737,42 @@ mysqldump -u bmnars -p gene_disease_all _cs_disease_map > ./_cs_disease_map.sql
 
 mysql -u bmnars -p gene_disease_all  < ./_cs_disease_map.sql
 ```
+
+#### 2019-06-17
+```
+CREATE TABLE array_list_new (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  a varchar(32) ,
+  d varchar(32) ,
+  gene_symbol varchar(255),
+  disease_name varchar(255),
+  disease_id varchar(32),
+  disease_zh_cn varchar(255)
+);
+
+CREATE TABLE array_list_new_surplus (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  a varchar(32) ,
+  d varchar(32) ,
+  gene_symbol varchar(255),
+  disease_name varchar(255),
+  disease_id varchar(32),
+  disease_zh_cn varchar(255)
+);
+
+alter table array_list_new_surplus add source varchar(255);
+
+
+create table aagatlas_result(
+    id int(11) AUTO_INCREMENT PRIMARY KEY,
+    disease_source varchar(255),
+    GeneSymbol varchar(255),
+    Disease varchar(255),
+    PubMed_ID varchar(255),
+    Sentence varchar(5000),
+    judge int(2),
+    result varchar(255)
+);
+
+
+```
