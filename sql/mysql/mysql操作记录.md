@@ -776,3 +776,48 @@ create table aagatlas_result(
 
 
 ```
+#### 2019-06-18
+```
+SELECT id, disease_source, GeneSymbol, Disease, PubMed_ID, Sentence FROM `aagatlas_result` where judge =1 and result = "风湿免疫科相关疾病信息检索_右边";
+
+alter table _cs_disease_dict drop primary key;
+alter table _cs_disease_dict add primary key(id);
+
+mysqldump -u bmnars -p gene_disease _cs_disease_map_copy_06_03 > ./_cs_disease_map_copy_06_03.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_list_copy_06_03 > ./_cs_disease_list_copy_06_03.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease _cs_disease_dict_copy_06_03 > ./_cs_disease_dict_copy_06_03.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_map_copy_06_03.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_dict_copy_06_03.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease  < ./_cs_disease_list_copy_06_03.sql
+vi93nwYV
+
+create table pmc_crispr_v2(
+  pmc_id int(11)  primary key,
+  title varchar(255),
+  author text,
+  keyword text,
+  img_dir varchar(255),
+  abstract text
+);
+
+mysqldump -u bmnars -p crispr pmc_crispr_v2 > ./pmc_crispr_v2.sql
+vi93nwYV
+
+mysql -u bmnars -p crispr  < ./pmc_crispr_v2.sql
+vi93nwYV
+
+mysql -u root -p 
+lwCP1zd6
+create database crispr charset='utf8';
+grant all privileges on crispr.* to bmnars@'localhost' IDENTIFIED BY "vi93nwYV";
+grant all privileges on crispr.* to bmnars@'%' IDENTIFIED BY "vi93nwYV";
+
+```
