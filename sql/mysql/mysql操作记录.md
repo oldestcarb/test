@@ -821,3 +821,21 @@ grant all privileges on crispr.* to bmnars@'localhost' IDENTIFIED BY "vi93nwYV";
 grant all privileges on crispr.* to bmnars@'%' IDENTIFIED BY "vi93nwYV";
 
 ```
+#### 2019-06-24
+```
+create table pmc_crispr_v2(
+  pmc_id int(11)  primary key,
+  title varchar(255),
+  author text,
+  pub_date varchar(16),
+  keyword text,
+  img_dir varchar(255),
+  abstract text,
+  links varchar(255)
+);
+
+mysqldump -u bmnars -p crispr pmc_crispr_v2 > ./pmc_crispr_v2.sql
+vi93nwYV
+
+mysql -u bmnars -p crispr  < ./pmc_crispr_v2.sql
+vi93nwYV
