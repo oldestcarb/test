@@ -839,3 +839,17 @@ vi93nwYV
 
 mysql -u bmnars -p crispr  < ./pmc_crispr_v2.sql
 vi93nwYV
+```
+#### 2019-06-26
+```
+CREATE TABLE ctd_infer (
+  disease_id varchar(50) NOT NULL ,
+  gene_id int(11) NOT NULL 
+);
+
+CREATE TABLE ctd_infer_12 (
+  disease_id varchar(50) NOT NULL ,
+  gene_id int(11) NOT NULL 
+);
+
+```
