@@ -848,8 +848,33 @@ CREATE TABLE ctd_infer (
 );
 
 CREATE TABLE ctd_infer_12 (
+
   disease_id varchar(50) NOT NULL ,
   gene_id int(11) NOT NULL 
 );
+
+CREATE TABLE ctd_infer_18 (
+  
+  disease_id varchar(50) NOT NULL ,
+  gene_id int(11) NOT NULL,
+  primary KEY(disease_id, gene_id)
+  
+);
+```
+
+#### 2019-06-26
+```
+create database tiantian charset=utf8;
+
+create user tiantian@'%' identified by 'tiantian';
+
+GRANT ALL PRIVILEGES ON tiantian.* TO 'tiantian'@'%' with grant option;
+
+# 修改加密规则
+ALTER USER 'tiantian'@'%' IDENTIFIED BY 'tiantian' PASSWORD EXPIRE NEVER;
+# 更新一下用户的密码 
+ALTER USER 'tiantian'@'%' IDENTIFIED WITH mysql_native_password BY 'tiantian';
+# 刷新权限
+FLUSH PRIVILEGES;
 
 ```
