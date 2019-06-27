@@ -211,5 +211,7 @@ drop user bmnars@'localhost';
 ```
 # 某个数据库权限
 GRANT ALL PRIVILEGES ON gene_disease.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
+# 8.0版本的授权
+GRANT ALL PRIVILEGES ON tiantian.* TO 'tiantian'@'%' with grant option;
 # 所有权限
 GRANT ALL PRIVILEGES ON *.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
