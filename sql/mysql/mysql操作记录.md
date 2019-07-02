@@ -853,7 +853,7 @@ CREATE TABLE ctd_infer_12 (
   gene_id int(11) NOT NULL 
 );
 
-CREATE TABLE ctd_infer_20 (
+CREATE TABLE ctd_infer_36 (
   
   disease_id varchar(50) NOT NULL ,
   gene_id int(11) NOT NULL,
