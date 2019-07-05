@@ -878,3 +878,21 @@ ALTER USER 'tiantian'@'%' IDENTIFIED WITH mysql_native_password BY 'tiantian';
 FLUSH PRIVILEGES;
 
 ```
+#### 2019-07-04
+```
+
+mysqldump -u bmnars -p gene_disease_all _cs_disease_map_millions > ./_cs_disease_map_millions.sql
+vi93nwYV
+
+
+CREATE TABLE array_list_500 (
+  a varchar(32) ,
+  d varchar(32) ,
+  gene_source varchar(32) ,
+  gene_symbol varchar(255),
+  disease_name varchar(255),
+  disease_id varchar(32),
+  disease_zh_cn varchar(255),
+  primary key(gene_symbol, disease_id)
+);
+```
