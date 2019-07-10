@@ -127,11 +127,11 @@ CREATE TABLE gene_primary_omim (
   update_time date);
 
 
-load data infile 'C:/Users/CRAB/Desktop/mim2gene.csv' 
-replace into table gene_primary_omim           
-fields terminated by ',' 
-optionally enclosed by '"' 
-lines terminated by '\r\n' 
+load data infile 'C:/Users/CRAB/Desktop/mim2gene.csv'
+replace into table gene_primary_omim
+fields terminated by ','
+optionally enclosed by '"'
+lines terminated by '\r\n'
 ignore 1 lines;
 
 insert into gene_primary_omim values('11120360', '', '', 'NULL', '2019-03-29')
@@ -272,7 +272,7 @@ CREATE TABLE disease_all (
   update_time date);
 alter table disease_all add unique(name);
 
-insert ignore into disease_all(mesh_id, name, acronym, parent) 
+insert ignore into disease_all(mesh_id, name, acronym, parent)
 select id, name, acronym, parent_name
 from disease_ctd_v2;
 ```
@@ -291,9 +291,9 @@ create table gene_all_v2(
 alter table gene_all_v2 add unique(name);
 
 update gene_all set update_time='2019-04-16';
-update disease_all set update_time='2019-04-16';  
+update disease_all set update_time='2019-04-16';
 
-INSERT into disease_all(mesh_id, NAME) 
+INSERT into disease_all(mesh_id, NAME)
 select id,name from disease_ctd_v2 on duplicate key update mesh_id = disease_ctd_v2.id;
 ```
 
@@ -417,7 +417,7 @@ drop table `_cs_disease_list`;
 drop table `_cs_disease_dict`;
 drop table `_cs_disease_map`;
 
-insert ignore into  `disease_all_copy`(name) 
+insert ignore into  `disease_all_copy`(name)
 SELECT DiseaseName from ctd_diseases_v2;
 ```
 #### 2019-04-26
@@ -508,7 +508,7 @@ CREATE TABLE `aagatlas_list_tmp` (
   `parent_id` varchar(255) NOT NULL DEFAULT '',
   `leaf` enum('1','0') DEFAULT '0',
 	id int(11) primary key auto_increment
-  
+
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 #### 2019-05-13
@@ -814,7 +814,7 @@ vi93nwYV
 mysql -u bmnars -p crispr  < ./pmc_crispr_v2.sql
 vi93nwYV
 
-mysql -u root -p 
+mysql -u root -p
 lwCP1zd6
 create database crispr charset='utf8';
 grant all privileges on crispr.* to bmnars@'localhost' IDENTIFIED BY "vi93nwYV";
@@ -844,21 +844,21 @@ vi93nwYV
 ```
 CREATE TABLE ctd_infer (
   disease_id varchar(50) NOT NULL ,
-  gene_id int(11) NOT NULL 
+  gene_id int(11) NOT NULL
 );
 
 CREATE TABLE ctd_infer_12 (
 
   disease_id varchar(50) NOT NULL ,
-  gene_id int(11) NOT NULL 
+  gene_id int(11) NOT NULL
 );
 
 CREATE TABLE ctd_infer_36 (
-  
+
   disease_id varchar(50) NOT NULL ,
   gene_id int(11) NOT NULL,
   primary KEY(disease_id, gene_id)
-  
+
 );
 ```
 
@@ -872,7 +872,7 @@ GRANT ALL PRIVILEGES ON tiantian.* TO 'tiantian'@'%' with grant option;
 
 # 修改加密规则
 ALTER USER 'tiantian'@'%' IDENTIFIED BY 'tiantian' PASSWORD EXPIRE NEVER;
-# 更新一下用户的密码 
+# 更新一下用户的密码
 ALTER USER 'tiantian'@'%' IDENTIFIED WITH mysql_native_password BY 'tiantian';
 # 刷新权限
 FLUSH PRIVILEGES;
@@ -895,4 +895,16 @@ CREATE TABLE array_list_500 (
   disease_zh_cn varchar(255),
   primary key(gene_symbol, disease_id)
 );
+```
+#### 2019-07-10
+```python
+mysqldump -u bmnars -p gene_disease _cs_disease_gene_info > ./_cs_disease_gene_info.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./_cs_disease_gene_info.sql
+vi93nwYV
+alter table _cs_gene_compare add info_geneid varchar(255);
+alter table _cs_gene_compare add info_symbol varchar(255);
+alter table _cs_gene_compare add info_synonyms varchar(255);
+alter table _cs_gene_compare add source varchar(255);
 ```
