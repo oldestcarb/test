@@ -71,8 +71,9 @@
 -  [插件以及同步](/vscode/插件及其错误.md)
     ```
     # Personal access tokens
-    9ed7033c4e1a4fe2e2486434982bdf0b6d10e5c3
-    # GIST ID   33d856790964117fe099caa0dcad1068
+    8a29b5d105b397b6b6d5e0c4a21e49a91fff3ec4
+    # GIST ID   
+    a929f82a75e8eef646947cd7afe16d73
     ```
 - 修改中文： ctrl + shift + p 输入：language 修改为："locale":"zh-CN" ,然后安装插件 Chinesev
 
