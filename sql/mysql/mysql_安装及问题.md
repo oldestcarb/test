@@ -7,7 +7,6 @@ mysqld -remove
 2. my.ini(安装目录)
 ```
 [mysql]
-[mysql]
 # 设置mysql客户端默认字符集
 default-character-set=utf8 
 [mysqld]
