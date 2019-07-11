@@ -60,6 +60,8 @@ mkvirtualenv my_spider
 workon
 # 进入/切换环境
 workon my_spider
+# 退出当前环境
+deactivate
 # 删除环境
 rmvirtualenv my_spider
 ```
