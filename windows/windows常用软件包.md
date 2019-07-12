@@ -72,7 +72,7 @@
     ```
     # Personal access tokens
     0f842ace632aa9f3bec637b1a82370e50ecb8c24
-    # GIST ID   
+    # GIST ID
     6c3946a9e589963538c21e86d0e4953e
     ```
 - 修改中文： ctrl + shift + p 输入：language 修改为："locale":"zh-CN" ,然后安装插件 Chinesev

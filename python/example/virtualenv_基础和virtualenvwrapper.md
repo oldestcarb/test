@@ -50,7 +50,7 @@ pip3 install virtualenvwrapper-win
 # 变量名
 WORKON_HOME
 # 变量值
-D:\program\program_essential\python36_virtualenv_home  
+D:\program\program_code\python36_virtualenv_home  
 ```
 2. 使用
 ```python
