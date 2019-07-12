@@ -13,12 +13,12 @@
 [chrome](https://www.google.cn/intl/zh-CN/chrome/)
 - 登陆
 
-[everything](http://www.voidtools.com/downloads/)(可移植)
+[everything](http://www.voidtools.com/downloads/)
 - 修改为开机运行
 - 新建窗口快捷键： `alt+d`
 
 
-[Snipaste](https://zh.snipaste.com/index.html)(可移植)
+[Snipaste](https://zh.snipaste.com/index.html)
 - 修改为开机运行
 
 
@@ -33,16 +33,27 @@
 
 
 [bandizip](https://www.bandisoft.com/bandizip/)
+
 [foxmail](https://www.foxmail.com)
+
 [微信](https://pc.weixin.qq.com)
+
 [QQ](https://office.qq.com)
+
 [网易云音乐](https://music.163.com)
+
 [有道词典](http://cidian.youdao.com)
+
 [有道云笔记](http://note.youdao.com)
+
 [PotPlayer](https://daumpotplayer.com/download/)
+
 [baacloud](https://www.baacloud37.com/shiyong.php)
+
 [百度网盘](http://pan.baidu.com/download)
+
 [迅雷](https://www.xunlei.com)
+
 [wps](https://www.wps.cn)
 
 ## `program/program_game`
