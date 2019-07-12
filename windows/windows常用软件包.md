@@ -58,6 +58,7 @@
 
 ## `program/program_game`
 [steam](https://store.steampowered.com)
+
 [wegame](https://www.wegame.com.cn)
 
 ## `program/program_code`
@@ -81,10 +82,13 @@
 - 安装路径`D:\program\program_code\Microsoft VS Code`
 -  [插件以及同步](/vscode/插件及其错误.md)
     ```
-    # Personal access tokens
-    0f842ace632aa9f3bec637b1a82370e50ecb8c24
-    # GIST ID
-    6c3946a9e589963538c21e86d0e4953e
+    # 1
+    351898d637142107d28cd3027300fab60f3c4f34
+    175cb01832251d47f2584795e1be5406
+    # 2
+    4d993a4fc5b83a12f030a7948461c650b091d53a
+    # 3
+    3e313ea874e6d870961edca72fc1ba63f95831b0
     ```
 - 修改中文： ctrl + shift + p 输入：language 修改为："locale":"zh-CN" ,然后安装插件 Chinesev
 
