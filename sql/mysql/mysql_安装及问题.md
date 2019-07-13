@@ -8,14 +8,14 @@ mysqld -remove
 ```
 [mysql]
 # 设置mysql客户端默认字符集
-default-character-set=utf8 
+default-character-set=utf8
 [mysqld]
 #设置3306端口
-port = 3306 
+port = 3306
 # 设置mysql的安装目录
-basedir=D:\program\mysql\mysql-8.0.13-winx64
+basedir=D:\program\program_database\mysql-8.0.13-winx64
 # 设置mysql数据库的数据的存放目录
-datadir=D:\program\mysql\mysqldata
+datadir=D:\program\program_database\mysqldata
 # 允许最大连接数
 max_connections=200
 # 服务端使用的字符集默认为8比特编码的latin1字符集
