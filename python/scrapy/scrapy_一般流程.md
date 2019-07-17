@@ -59,3 +59,74 @@ class RandomUserAgent(object):
         user_agent = random.choice(settings['USER_AGENTS'])
         request.headers.setdefault("User-Agent", user_agent)
 ```
+
+5. spider(`/Exosomemed_spider/spiders/exosomemed.py`)
+```python
+#  -*- coding:utf-8 -*-
+
+import scrapy
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
+from exosomemed_spider.items import ExosomemedSpiderItem
+import re
+
+class Exosomemed(CrawlSpider):
+    name = 'exosomemed'
+    allow_domains = ['www.exosomemed.com']
+
+    # 爬取research和专题下的所有文章
+    start_urls = [
+        'http://www.exosomemed.com/category/research',
+        # 'http://www.exosomemed.com/category/专题',
+    ]
+
+    # 获取索引页
+    research_links = LinkExtractor(allow=(r'category\/research\/page\/\d+'))
+    # special_links = LinkExtractor(allow=(r'category\/%E4%B8%93%E9%A2%98\/page\/\d+'))
+
+    # 获取文章
+    article_links = LinkExtractor(allow=(r'com\/\d+.html'))
+    rules = [
+        Rule(research_links, callback=None, follow=True),
+        # Rule(special_links, callback=None, follow=True),
+        Rule(article_links, callback='parse_article', follow=False),
+    ]
+
+    def parse_article(self, response):
+        # 实例化
+        item = ExosomemedSpiderItem()
+        try:
+            # 获取文件保存名
+            item['file_name'] = re.search('/(\d+\.html)', response.url).group(1)
+            # 获取文章内容
+            item['result'] = re.search(r'<div id="content">(.*)<div class="article-pagenavi">', response.text, re.I|re.S).group(1)
+            # 判断文件属于research还是专题
+            # print(response.)
+            yield item
+        except:
+            print(response.url)
+```
+
+6. 编辑pipelines(`/Exosomemed_spider/pipelines.py`)
+```python
+# -*- coding: utf-8 -*-
+
+import os
+
+class ExosomemedSpiderPipeline(object):
+    def process_item(self, item, spider):
+        # file_dir = r'D:/test/exosomemed/special'
+        file_dir = r'D:/test/exosomemed/research'
+        if not os.path.exists(file_dir):
+            os.makedirs(file_dir)
+        with open(file_dir +'/'+ item['file_name'], 'w', encoding='utf-8') as f:
+            f.write(item['result'])
+
+        return item
+```
+- settings(`/Exosomemed_spider/settings.py`)添加`ExosomemedSpiderPipeline`
+```python
+ITEM_PIPELINES = {
+   'exosomemed_spider.pipelines.ExosomemedSpiderPipeline': 300,
+}
+```
