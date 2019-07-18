@@ -908,3 +908,18 @@ alter table _cs_gene_compare add info_symbol varchar(255);
 alter table _cs_gene_compare add info_synonyms varchar(255);
 alter table _cs_gene_compare add source varchar(255);
 ```
+#### 2019-07-18
+```python
+create database spider_by_scrapy charset=utf8;
+create user scrapy@'%' identified by 'scrapy';
+GRANT ALL PRIVILEGES ON spider_by_scrapy.* TO 'scrapy'@'%' with grant option;
+create table bcycoser_images(
+    id varchar(32) primary key,
+    title varchar(255) ,
+    url varchar(255)
+);
+
+ALTER USER 'scrapy'@'%' IDENTIFIED BY 'scrapy' PASSWORD EXPIRE NEVER;
+ALTER USER 'scrapy'@'%' IDENTIFIED WITH mysql_native_password BY 'scrapy';
+FLUSH PRIVILEGES;
+```
