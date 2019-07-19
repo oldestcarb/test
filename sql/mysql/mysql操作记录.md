@@ -923,3 +923,11 @@ ALTER USER 'scrapy'@'%' IDENTIFIED BY 'scrapy' PASSWORD EXPIRE NEVER;
 ALTER USER 'scrapy'@'%' IDENTIFIED WITH mysql_native_password BY 'scrapy';
 FLUSH PRIVILEGES;
 ```
+#### 2019-07-19
+```python
+create database entrez_gene charset=utf8;
+GRANT ALL PRIVILEGES ON entrez_gene.* TO 'bmnars'@'%' with grant option;
+
+mysql -h localhost -u root -p  < tables_for_entrezgene.sql
+lwCP1zd6
+```

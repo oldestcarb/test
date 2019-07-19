@@ -1,25 +1,23 @@
-class A(object):
-    __isinstance = None
-    __init_first = True
+from multiprocessing import Process,Pool
+# -*- coding:utf-8 -*-
 
-    def __init__(self, age):
-        # if self.__init_first:
-        self.age = age
-        print( self.age)
-        #     self.age = age
-        #     print(age)
-        #     A.__init_first = False
+import time
+from multiprocessing import Process
 
-    def __new__(cls, age):
-        if not cls.__isinstance:
-            cls.__isinstance = object.__new__(cls)
-        return cls.__isinstance
+def test(a):
+    print(a)
+    time.sleep(5)
+    print('------{}----------'.format(a))
 
-if __name__ == "__main__":
-     a = A(1)
-     b = A(2)
-     print(a.age)
-     print(id(a))
-     print(id(b))
-     a.age = 3
-     print(b.age)
+if __name__ == '__main__':
+    print('start', time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
+    start = time.time()
+
+    p = Pool(4)
+    for i in  range(15):
+        p.apply_async(test, args=(i,))
+    p.close()
+    p.join()
+    print('=============')
+    print('stop', time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
+    print('all', time.time()-start)
