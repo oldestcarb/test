@@ -6,7 +6,7 @@
 2. win下安装
     选择安装路径：
     ```
-    D:\program\progran_databases\MongoDB\Server\4.0\data\
+    D:\program\program_databases\MongoDB\Server\4.0\data\
     ```
     进入安装目录，bin目录位置新建同级目录data，进入data新建文件夹db，作为数据储存目录
     以管理员进入bin目录，设置mongodb服务

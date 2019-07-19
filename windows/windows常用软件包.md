@@ -98,5 +98,5 @@
 - [配置](/sql/mysql/mysql_安装及问题.md)
 
 [mongodb](https://www.mongodb.com/download-center/community)
-- 安装路径`D:\program\progran_databases\MongoDB`
+- 安装路径`D:\program\program_databases\MongoDB`
 - [配置](/sql/mongodb/mongodb_安装及问题.md)
