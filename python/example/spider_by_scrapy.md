@@ -23,8 +23,15 @@ FLUSH PRIVILEGES;
 
 # 第一次导出数据库(已包括创建数据库, 恢复时无需指定数据库)
 mysqldump -u scrapy -p --databases spider_by_scrapy > spider_by_scrapy.sql
+
+# 导入数据库
+mysql -u scrapy -p < spider_by_scrapy.sql
 ```
 ##### mongo
 ```mongo
+# 备份
 mongodump -h localhost -d spider_by_scrapy -o ./
+
+# 恢复
+mongorestore -h localhost -d spider_by_scrapy --dir spider_by_scrapy
 ```
