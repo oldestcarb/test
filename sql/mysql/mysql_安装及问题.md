@@ -44,6 +44,10 @@ mysqld --console
 4. ```mysqld -install```
 5. ```net start mysql```
 
+##### 添加环境变量
+```
+D:\program\program_database\mysql-8.0.13-winx64\bin
+```
 ##### 初始设置
 ```
 # root用户密码密码
