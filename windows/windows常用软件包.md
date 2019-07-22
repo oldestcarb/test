@@ -82,13 +82,8 @@
 - 安装路径`D:\program\program_code\Microsoft VS Code`
 -  [插件以及同步](/vscode/插件及其错误.md)
     ```
-    # 1
-    351898d637142107d28cd3027300fab60f3c4f34
-    175cb01832251d47f2584795e1be5406
-    # 2
-    4d993a4fc5b83a12f030a7948461c650b091d53a
-    # 3
-    3e313ea874e6d870961edca72fc1ba63f95831b0
+    同步：上传完成。 主旨ID:fc87a1a43ac3f955bfd9c8489503af1a. 请复制和使用这个标识的其他机下载设置。
+    5e48aac8815229245b033d2c014ffa47fde7b97a
     ```
 - 修改中文： ctrl + shift + p 输入：language 修改为："locale":"zh-CN" ,然后安装插件 Chinesev
 
@@ -98,5 +93,5 @@
 - [配置](/sql/mysql/mysql_安装及问题.md)
 
 [mongodb](https://www.mongodb.com/download-center/community)
-- 安装路径`D:\program\program_databases\MongoDB`
+- 安装路径`D:\program\program_database\MongoDB`
 - [配置](/sql/mongodb/mongodb_安装及问题.md)
