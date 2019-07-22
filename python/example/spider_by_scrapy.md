@@ -26,6 +26,9 @@ mysqldump -u scrapy -p --databases spider_by_scrapy > spider_by_scrapy.sql
 
 # 导入数据库
 mysql -u scrapy -p < spider_by_scrapy.sql
+
+# 导出某个表
+mysqldump -u scrapy -p spider_by_scrapy acfun_follow_update> acfun_follow_update.sql
 ```
 ##### mongo
 ```mongo
