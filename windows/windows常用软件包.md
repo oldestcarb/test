@@ -82,8 +82,8 @@
 - 安装路径`D:\program\program_code\Microsoft VS Code`
 -  [插件以及同步](/vscode/插件及其错误.md)
     ```
-    同步：上传完成。 主旨ID:fc87a1a43ac3f955bfd9c8489503af1a. 请复制和使用这个标识的其他机下载设置。
-    5e48aac8815229245b033d2c014ffa47fde7b97a
+    GitHub Token: 26dda84aa76d7b8f0eaccf9211f93a4bdff8f7da
+    GitHub Gist: fc87a1a43ac3f955bfd9c8489503af1a
     ```
 - 修改中文： ctrl + shift + p 输入：language 修改为："locale":"zh-CN" ,然后安装插件 Chinesev
 
