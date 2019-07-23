@@ -931,3 +931,21 @@ GRANT ALL PRIVILEGES ON entrez_gene.* TO 'bmnars'@'%' with grant option;
 mysql -h localhost -u root -p  < tables_for_entrezgene.sql
 lwCP1zd6
 ```
+
+#### 2019-07-19
+```python
+mysqldump -u bmnars -p --databases entrez_gene > entrez_gene.sql
+
+
+CREATE TABLE `gene_group` (
+  `hgnc_id` varchar(30) ,
+  `approved_symbol` varchar(30) DEFAULT NULL,
+  `approved_name` varchar(250) DEFAULT NULL,
+  `previous_symbols` varchar(50) DEFAULT NULL,
+  `synonyms` varchar(250) DEFAULT NULL,
+  `chromosome` varchar(50) DEFAULT NULL,
+  `group` varchar(250) DEFAULT NULL,
+  `root_symbol` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`hgnc_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+```
