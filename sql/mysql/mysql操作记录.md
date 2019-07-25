@@ -938,14 +938,23 @@ mysqldump -u bmnars -p --databases entrez_gene > entrez_gene.sql
 
 
 CREATE TABLE `gene_group` (
-  `hgnc_id` varchar(30) ,
-  `approved_symbol` varchar(30) DEFAULT NULL,
+  `hgnc_id` varchar(50) ,
+  `approved_symbol` varchar(50) DEFAULT NULL,
   `approved_name` varchar(250) DEFAULT NULL,
-  `previous_symbols` varchar(50) DEFAULT NULL,
+  `previous_symbols` varchar(250) DEFAULT NULL,
   `synonyms` varchar(250) DEFAULT NULL,
   `chromosome` varchar(50) DEFAULT NULL,
-  `group` varchar(250) DEFAULT NULL,
+  `gene_group` varchar(250) ,
   `root_symbol` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`hgnc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`hgnc_id`,`gene_group`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+```
+
+#### 2019-07-19
+```python
+mysqldump -u bmnars -p gene_disease gene_group > ./gene_group.sql
+vi93nwYV
+
+mysql -u bmnars -p entrez_gene  < ./gene_group.sql
+vi93nwYV
 ```
