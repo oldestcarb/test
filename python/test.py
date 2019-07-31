@@ -1,23 +1,18 @@
-from multiprocessing import Process,Pool
-# -*- coding:utf-8 -*-
 
+import multiprocessing
 import time
-from multiprocessing import Process
-
-def test(a):
-    print(a)
-    time.sleep(5)
-    print('------{}----------'.format(a))
-
+ 
+def process(num):
+    time.sleep(num)
+    print('Process:', num)
+ 
 if __name__ == '__main__':
-    print('start', time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
-    start = time.time()
-
-    p = Pool(4)
-    for i in  range(15):
-        p.apply_async(test, args=(i,))
-    p.close()
-    p.join()
-    print('=============')
-    print('stop', time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
-    print('all', time.time()-start)
+    for i in range(5):
+        p = multiprocessing.Process(target=process, args=(i,))
+        p.start()
+ 
+    print('CPU number:' + str(multiprocessing.cpu_count()))
+    for p in multiprocessing.active_children():
+        print('Child process name: ' + p.name + ' id: ' + str(p.pid))
+ 
+    print('Process Ended')

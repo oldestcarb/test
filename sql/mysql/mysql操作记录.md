@@ -950,11 +950,57 @@ CREATE TABLE `gene_group` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 
-#### 2019-07-19
+#### 2019-07-24
 ```python
 mysqldump -u bmnars -p gene_disease gene_group > ./gene_group.sql
 vi93nwYV
 
 mysql -u bmnars -p entrez_gene  < ./gene_group.sql
 vi93nwYV
+```
+#### 2019-07-29
+```python
+CREATE TABLE `pathway_1` (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `doc_1` varchar(250) ,
+  `doc_2` varchar(250) ,
+  `doc_3` varchar(250),
+  `doc_4` varchar(250),
+  `doc_5` varchar(250),
+  `doc_6` varchar(250) ,
+  `doc_7` varchar(250) ,
+  `doc_8` text 
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pathway_2` (
+  `bs_id` varchar(250) ,
+  `gene_id` varchar(250) 
+
+) DEFAULT CHARSET=utf8;
+```
+#### 2019-07-30
+```python
+alter table pathway_2 add primary key(bs_id,gene_id);
+
+mysqldump -u bmnars -p crispr pathway_2 > ./pathway_2.sql
+vi93nwYV
+
+mysql -u bmnars -p entrez_gene  < ./pathway_2.sql
+vi93nwYV
+
+alter table gene_group add gene_id int(11) DEFAULT NULL;
+alter table gene_group add KEY `gene_group_index` (`gene_id`);
+```
+#### 2019-07-31
+```python
+alter table bsid2info drop id;
+alter table bsid2info change doc_1 bs_id int(11) primary key;
+alter table bsid2info change doc_2 source varchar(50) ;
+alter table bsid2info change doc_3 accession varchar(250) ;
+alter table bsid2info change doc_4 name varchar(250) ;
+alter table bsid2info change doc_5 type_biosystem varchar(50) ;
+alter table bsid2info change doc_6 taxonomic_scope varchar(250) ;
+alter table bsid2info change tax_id tax_id int(11) ;
+alter table bsid2info change doc_8 description text ;
+
 ```
