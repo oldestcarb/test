@@ -1004,3 +1004,21 @@ alter table bsid2info change tax_id tax_id int(11) ;
 alter table bsid2info change doc_8 description text ;
 
 ```
+#### 2019-08-02
+```python
+mysqldump -u bmnars -p gene_disease_all _cs_disease_map > ./_cs_disease_map.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease_all _cs_disease_list > ./_cs_disease_list.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease_all _cs_disease_dict > ./_cs_disease_dict.sql
+vi93nwYV
+
+mysql -u bmnars -p entrez_gene  < ./_cs_disease_map.sql
+vi93nwYV
+
+mysql -u bmnars -p entrez_gene  < ./_cs_disease_dict.sql
+vi93nwYV
+
+mysql -u bmnars -p entrez_gene  < ./_cs_disease_list.sql
+vi93nwYV
+```
