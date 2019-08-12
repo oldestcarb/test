@@ -1022,3 +1022,18 @@ vi93nwYV
 mysql -u bmnars -p entrez_gene  < ./_cs_disease_list.sql
 vi93nwYV
 ```
+
+
+#### 2019-08-12
+```python
+mysqldump -u bmnars -p gene_disease aagatlas_disease > ./aagatlas_disease.sql
+vi93nwYV
+mysqldump -u bmnars -p gene_disease aagatlas_result > ./aagatlas_result.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./aagatlas_disease.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./aagatlas_result.sql
+vi93nwYV
+```
