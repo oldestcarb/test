@@ -1037,3 +1037,14 @@ vi93nwYV
 mysql -u bmnars -p gene_disease_all  < ./aagatlas_result.sql
 vi93nwYV
 ```
+
+#### 2019-08-15
+```python
+create table tree_of_mesh(
+    tree_number varchar(100),
+    disease_name varchar(250),
+    parent_tree_number varchar(100),
+    disease_ui varchar(100),
+    primary key(tree_number, parent_tree_number)
+)DEFAULT CHARSET=utf8;;
+```
