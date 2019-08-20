@@ -1040,6 +1040,7 @@ vi93nwYV
 
 #### 2019-08-15
 ```python
+# mesh疾病树
 create table tree_of_mesh(
     tree_number varchar(100),
     disease_name varchar(250),
@@ -1047,4 +1048,20 @@ create table tree_of_mesh(
     disease_ui varchar(100),
     primary key(tree_number, parent_tree_number)
 )DEFAULT CHARSET=utf8;;
+```
+
+#### 2019-08-20
+```python
+# 医生名单
+create table doctor(
+name varchar(100),
+position varchar(100),
+professional varchar(100),
+hospital varchar(100),
+department varchar(100),
+primary key(name, hospital)
+)DEFAULT CHARSET=utf8;
+
+alter table doctor add mark varchar(100),
+
 ```
