@@ -1065,3 +1065,7 @@ primary key(name, hospital)
 alter table doctor add mark varchar(100),
 
 ```
+#### 2019-08-23
+```python
+# tiantian数据库导出
+mysqldump -u tiantian -p tiantian > tiantian.sql
