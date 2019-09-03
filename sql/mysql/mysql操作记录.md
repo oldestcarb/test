@@ -1069,3 +1069,33 @@ alter table doctor add mark varchar(100),
 ```python
 # tiantian数据库导出
 mysqldump -u tiantian -p tiantian > tiantian.sql
+```
+
+#### 2019-08-23
+```
+# 导入三甲医院名单
+mysqldump -u bmnars -p crispr  > ./sanjia.sql
+vi93nwYV
+
+mysql -u bmnars -p gene_disease_all  < ./sanjia.sql
+vi93nwYV
+
+```
+#### 2019-08-20
+```
+# 官网文章信息
+create table gene_article(
+title varchar(200) primary key,
+content text,
+source varchar(100),
+pub_date varchar(10)
+
+)DEFAULT CHARSET=utf8;
+```
+
+#### 2019-09-03
+```
+# 博客数据库
+create database my_blog charset=utf8;
+create user blog@'%' identified by 'blog';
+GRANT ALL PRIVILEGES ON my_blog.* TO 'blog'@'%' with grant option;
