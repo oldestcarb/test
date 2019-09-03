@@ -13,6 +13,9 @@ django-admin startproject dailyfresh
 ```
 3. 修改模型数据库
 ```python
+# 时区
+LANGUAGE_CODE = 'zh-Hans'
+TIME_ZONE = 'Asia/Shanghai'
 # 修改settings.py中的DATABASES
 DATABASES = {
     'default': {
