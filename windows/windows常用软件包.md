@@ -86,6 +86,7 @@
     GitHub Gist: fc87a1a43ac3f955bfd9c8489503af1a
     ```
 - 修改中文： ctrl + shift + p 输入：language 修改为："locale":"zh-CN" ,然后安装插件 Chinesev
+-  [设置](/vscode/vscode_settings.json)
 
 ## `program/program_database`
 [mysql](https://dev.mysql.com/downloads/mysql/)

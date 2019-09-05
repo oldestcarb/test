@@ -1,0 +1,197 @@
+{
+    "git.path": "D:/program/program_code/Git/bin",
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "python.formatting.provider": "yapf",
+    "workbench.statusBar.feedback.visible": false,
+    "breadcrumbs.enabled": true,
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "default",
+    "workbench.activityBar.visible": true,
+    "editor.minimap.enabled": true,
+    "python.pythonPath": "D:/program/program_code/Python36/python.exe",
+    "python.venvPath": "D:/program/program_code/python36_virtualenv_home",
+    "python.venvFolders": [
+        "envs",
+        ".pyenv",
+        ".direnv",
+        ".env"],
+    "files.maxMemoryForLargeFilesMB": 8096,
+    "sync.gist": "70e94cb4f52c8245d7872319e9702403",
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[django-html]": {"editor.defaultFormatter": "HookyQR.beautify"},
+    "[markdown]": {
+
+    },
+    "files.associations": {
+        "*.md": "markdown",
+        "*.html": "html"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "sync.quietSync": false,
+    "python.autoComplete.addBrackets": true,
+    "open-in-browser.default": "D:\\program\\program_code\\360Chrome\\Chrome\\Application\\360chrome.exe",
+    "git.autofetch": true,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "sync.forceDownload": false,
+    "workbench.colorTheme": "One Dark Pro",
+    "[python]": {
+
+    },
+    "remote.SSH.showLoginTerminal": true,
+    "python.terminal.executeInFileDir": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.colorCustomizations":{
+        // "tab.activeBackground": "#282c34",
+        // 当前活动tab颜色
+        "tab.activeBackground": "#446cbd",
+        // "activityBar.background": "#282c34",
+        "activityBar.background": "#282c34",
+        "sideBar.background": "#282c34",
+    },
+    "editor.tokenColorCustomizations":{
+        // 对主题进行设置
+        "[One Dark Pro]": {
+            "textMateRules": [
+            {
+                "scope":["source.python"],
+                "settings": {
+                // "foreground": "#e06c75",
+                "foreground": "#afdf2b",
+            },
+            },
+            {
+                // 注释 样式，颜色
+                "name": "Comments",
+                "scope": "comment, punctuation.definition.comment",
+                "settings": {
+                // "foreground": "#545657",
+                "foreground": "#7f848e",
+                // "fontStyle": "",
+                }
+            },
+            {
+                // 注释内容样式
+                "name": "comment",
+                "scope": "comment.line.double-slash,comment.block.documentation",
+                "settings": {
+                "fontStyle": "",
+                }
+            },
+            // 设置python文件的样式
+            {
+                "name": "support.variable.magic.python",
+                "scope": "support.variable.magic.python",
+                "settings": {
+                "foreground": "#e06c75"
+                }
+            },
+            {
+                "name": "punctuation.separator.parameters.python",
+                "scope": "punctuation.separator.period.python,punctuation.separator.element.python,punctuation.parenthesis.begin.python,punctuation.parenthesis.end.python,",
+                "settings": {
+                "foreground": "#abb2bf"
+                }
+            },
+            {
+                "name": "variable.parameter.function.language.special.self.python",
+                "scope": "variable.parameter.function.language.special.self.python",
+                "settings": {
+                "foreground": "#e5c07b"
+                }
+            },
+            {
+                "name": "python parameter",
+                "scope": "variable.parameter.function.language.python",
+                "settings": {
+                "foreground": "#d19a66"
+                }
+            },
+            {
+                "name": "python type",
+                "scope": "support.type.python",
+                "settings": {
+                "foreground": "#56b6c2"
+                }
+            },
+            {
+                "name": "python logical",
+                "scope": "keyword.operator.logical.python",
+                "settings": {
+                "foreground": "#c678dd"
+                }
+            },
+            {
+                "name": "pyCs",
+                "scope": "variable.parameter.function.python",
+                "settings": {
+                "foreground": "#d19a66"
+                }
+            },
+            {
+                "name": "python block",
+                "scope": "punctuation.definition.arguments.begin.python,punctuation.definition.arguments.end.python,punctuation.separator.arguments.python,punctuation.definition.list.begin.python,punctuation.definition.list.end.python",
+                "settings": {
+                "foreground": "#abb2bf"
+                }
+            },
+            {
+                "name": "python function-call.generic",
+                "scope": "meta.function-call.generic.python",
+                "settings": {
+                "foreground": "#61afef"
+                }
+            },
+            {
+                "name": "python placeholder reset to normal string",
+                "scope": "constant.character.format.placeholder.other.python",
+                "settings": {
+                "foreground": "#d19a66"
+                }
+            },
+            {
+                "name": "Python Keyword Control",
+                "scope": "keyword.control.import.python,keyword.control.flow.python",
+                "settings": {
+                "fontStyle": "italic"
+                }
+            },
+            {
+                "name": "python function decorator @",
+                "scope": "meta.function.decorator.python",
+                "settings": {
+                "foreground": "#61afef"
+                }
+            },
+            {
+                "name": "python function support",
+                "scope": "support.token.decorator.python,meta.function.decorator.identifier.python",
+                "settings": {
+                "foreground": "#56b6c2"
+                }
+            },
+        ]
+    }
+    }
+}
+
