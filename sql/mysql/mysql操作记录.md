@@ -1099,3 +1099,18 @@ pub_date varchar(10)
 create database my_blog charset=utf8;
 create user blog@'%' identified by 'blog';
 GRANT ALL PRIVILEGES ON my_blog.* TO 'blog'@'%' with grant option;
+```
+
+#### 2019-09-06
+```
+# 全国医院表
+create table hospial(
+    name varchar(150) primary key,
+    province varchar(100),
+    city varchar(100),
+    grade varchar(100),
+    address varchar(255),
+    phone varchar(100),
+    Summary varchar(255)
+);
+```
