@@ -6,8 +6,8 @@
     "workbench.statusBar.feedback.visible": false,
     "breadcrumbs.enabled": true,
     "workbench.statusBar.visible": true,
-    "window.menuBarVisibility": "default",
-    "workbench.activityBar.visible": true,
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.visible": false,
     "editor.minimap.enabled": true,
     "python.pythonPath": "D:/program/program_code/Python36/python.exe",
     "python.venvPath": "D:/program/program_code/python36_virtualenv_home",
@@ -20,7 +20,6 @@
     "sync.gist": "70e94cb4f52c8245d7872319e9702403",
     "sync.autoDownload": false,
     "sync.autoUpload": false,
-    "workbench.iconTheme": "material-icon-theme",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.jediEnabled": false,
@@ -50,7 +49,6 @@
         "editor.defaultFormatter": "HookyQR.beautify"
     },
     "sync.forceDownload": false,
-    "workbench.colorTheme": "One Dark Pro",
     "[python]": {
 
     },
@@ -61,25 +59,56 @@
     },
     "workbench.settings.openDefaultKeybindings": true,
     "workbench.settings.openDefaultSettings": true,
+    // icon主题
+    "workbench.iconTheme": "material-icon-theme",
+    // 主题
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.colorCustomizations":{
-        // "tab.activeBackground": "#282c34",
         // 当前活动tab颜色
-        "tab.activeBackground": "#446cbd",
-        // "activityBar.background": "#282c34",
+        "tab.activeBorder": "#446cbd",
+        // 选项卡被悬停时的背景色
+        "tab.hoverBackground": "#446cbd",
+
+        // 活动栏
         "activityBar.background": "#282c34",
+        // 侧边栏颜色
         "sideBar.background": "#282c34",
+        // 当前元素文字颜色
+        // "foreground": "#ff0000",
+        // 区域周围的额外边框
+        // "contrastBorder": "#00AA00",
+        // 当前活动边框
+        // "contrastActiveBorder":"#ff0000",
+        // 输入框颜色
+        // "focusBorder":"#ff0000",
+        // 小部件的阴影颜色
+        // "widget.shadow":"#ff0000",
+        // 当前活动行颜色
+        "editorLineNumber.activeForeground": "#ff0000",
+        // 选中文本颜色
+        "editor.selectionBackground":"#446cbd",
+        // 与所选项内容相同的区域的边框颜色。
+        "editor.selectionHighlightBorder": "#ff0000",
+        // 光标颜色
+        "editorCursor.foreground": "#446cbd",
+        // 匹配括号的背景色
+        "editorBracketMatch.background": "#ff0000",
+
+        // 下拉列表前景色
+        "dropdown.foreground": "#ff0000",
+
+        // 使用鼠标移动项目时，列表或树的背景颜色。
+        "list.hoverBackground":  "#446cbd",
+        "list.inactiveSelectionBackground":  "#446cbd",
+
+        // 悬停时的状态栏项背景色
+        "statusBarItem.hoverBackground":  "#446cbd",
     },
+
     "editor.tokenColorCustomizations":{
         // 对主题进行设置
         "[One Dark Pro]": {
             "textMateRules": [
-            {
-                "scope":["source.python"],
-                "settings": {
-                // "foreground": "#e06c75",
-                "foreground": "#afdf2b",
-            },
-            },
             {
                 // 注释 样式，颜色
                 "name": "Comments",
@@ -100,20 +129,30 @@
             },
             // 设置python文件的样式
             {
+                "scope":["source.python"],
+                "settings": {
+                "foreground": "#e06c75",
+                // "foreground": "#00e444",
+            },
+            },
+            {
+                // __name__
                 "name": "support.variable.magic.python",
                 "scope": "support.variable.magic.python",
                 "settings": {
-                "foreground": "#e06c75"
+                "foreground":"#e06c75",
                 }
             },
             {
+                // 分隔符
                 "name": "punctuation.separator.parameters.python",
                 "scope": "punctuation.separator.period.python,punctuation.separator.element.python,punctuation.parenthesis.begin.python,punctuation.parenthesis.end.python,",
                 "settings": {
-                "foreground": "#abb2bf"
+                "foreground": "#abb2bf",
                 }
             },
             {
+                //  函数参数
                 "name": "variable.parameter.function.language.special.self.python",
                 "scope": "variable.parameter.function.language.special.self.python",
                 "settings": {
@@ -128,6 +167,7 @@
                 }
             },
             {
+                // python 类型
                 "name": "python type",
                 "scope": "support.type.python",
                 "settings": {
@@ -135,6 +175,7 @@
                 }
             },
             {
+                // in
                 "name": "python logical",
                 "scope": "keyword.operator.logical.python",
                 "settings": {
@@ -149,13 +190,15 @@
                 }
             },
             {
+                // ,
                 "name": "python block",
                 "scope": "punctuation.definition.arguments.begin.python,punctuation.definition.arguments.end.python,punctuation.separator.arguments.python,punctuation.definition.list.begin.python,punctuation.definition.list.end.python",
                 "settings": {
-                "foreground": "#abb2bf"
+                "foreground": "#d4f70e"
                 }
             },
             {
+                // 调用方法
                 "name": "python function-call.generic",
                 "scope": "meta.function-call.generic.python",
                 "settings": {
@@ -163,10 +206,11 @@
                 }
             },
             {
+                // %d
                 "name": "python placeholder reset to normal string",
                 "scope": "constant.character.format.placeholder.other.python",
                 "settings": {
-                "foreground": "#d19a66"
+                "foreground": "#e06c75",
                 }
             },
             {
@@ -192,6 +236,7 @@
             },
         ]
     }
-    }
+    },
+    "sync.forceUpload": true
 }
 
