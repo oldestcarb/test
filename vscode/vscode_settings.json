@@ -7,7 +7,7 @@
     "breadcrumbs.enabled": true,
     "workbench.statusBar.visible": true,
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "editor.minimap.enabled": true,
     "python.pythonPath": "D:/program/program_code/Python36/python.exe",
     "python.venvPath": "D:/program/program_code/python36_virtualenv_home",
@@ -99,7 +99,18 @@
 
         // 使用鼠标移动项目时，列表或树的背景颜色。
         "list.hoverBackground":  "#446cbd",
+        // 已选项在列表或树非活动时的背景颜色。活动的列表或树具有键盘焦点，非活动的没有。
         "list.inactiveSelectionBackground":  "#446cbd",
+        // 滚动条滑块背景色
+        "list.dropBackground":   "#ff0000",
+        // 已选项在列表或树活动时的背景颜色。活动的列表或树具有键盘焦点，非活动的没有。
+        "list.activeSelectionBackground":   "#446cbd",
+
+        // 滚动条滑块在被点击时的背景色。
+        "scrollbarSlider.activeBackground":   "#446cbd",
+        // 滚动条滑块背景色
+        "scrollbarSlider.background":   "#446cbd",
+        "statusBarItem.activeBackground":   "#446cbd",
 
         // 悬停时的状态栏项背景色
         "statusBarItem.hoverBackground":  "#446cbd",
@@ -237,6 +248,22 @@
         ]
     }
     },
-    "sync.forceUpload": true
+    // "sync.forceUpload": true,
+    // "fileheader.customMade": {
+    //     "Description": "",
+    //     "Author": "oldest",
+    //     "Github": "",
+    //     "Date": "Do not edit", // 文件创建时间(不变)
+    //     "LastEditors": "OBKoro1", // 文件最后编辑者
+    //     "LastEditTime": "Do not edit" // 文件最后编辑时间
+    //     },
+    // "fileheader.cursorMode": {
+    //     "description": "",
+    //     "param": "{type}",
+    //     "return": "",
+    // },
+    // "fileheader.configObj": {
+    //     "autoAdd": true, // 默认开启
+    // }
 }
 
