@@ -1104,13 +1104,14 @@ GRANT ALL PRIVILEGES ON my_blog.* TO 'blog'@'%' with grant option;
 #### 2019-09-06
 ```
 # 全国医院表
-create table hospial(
-    name varchar(150) primary key,
-    province varchar(100),
-    city varchar(100),
-    grade varchar(100),
+create table hospital(
+    name varchar(255) primary key,
+    province varchar(255),
+    city varchar(255),
+    grade varchar(255),
     address varchar(255),
-    phone varchar(100),
-    Summary varchar(255)
-);
+    phone varchar(255),
+    way text
+)DEFAULT CHARSET=utf8;
+
 ```
