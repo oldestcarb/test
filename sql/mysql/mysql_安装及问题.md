@@ -1,8 +1,15 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2018-12-03 09:50:12
+ * @LastEditTime: 2018-12-03 09:50:12
+ * @LastEditors: your name
+ -->
 #### win 10 安装mysql
 1. 删除
 ```
 net stop mysql
-mysqld -remove
+mysqld remove
 ```
 2. my.ini(安装目录)
 ```
@@ -41,7 +48,7 @@ mysqld --console
 2. ```mysqld -remove ```
 3. ```mysqld --initialize-insecure```
     > 会发现程序在mysql的根目录下自动创建了data文件夹以及相关的文件
-4. ```mysqld -install```
+4. ```mysqld install```
 5. ```net start mysql```
 
 ##### 添加环境变量
