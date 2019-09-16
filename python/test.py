@@ -13,4 +13,4 @@ text = '''
 '''
 html = etree.HTML(text)
 result = html.xpath('//li')
-print(result)
+prit(result)

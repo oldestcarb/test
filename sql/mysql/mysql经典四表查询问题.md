@@ -167,3 +167,116 @@ where s.sid=sc.sid
 GROUP BY sc.sid
 having count(sc.cid) != (select count(*) from course);
 ```
+
+11. 查询至少有一门课与学号为"01"的同学所学相同的同学的信息
+```mysql
+SELECT distinct s.* from student s, sc where sc.sid= s.sid and sc.cid in (select cid from sc WHERE sc.sid='01') and sc.sid !='01';
+```
+
+
+12. 查询和"01"号的同学学习的课程完全相同的其他同学的信息
+```mysql
+# TODO: 还未验证过对错，没想明白
+select s.* from student s where s.sid in(
+select distinct sc.sid from sc where sid<>1 and sc.cid in(
+select distinct cid from sc where sid=1
+)group by sc.sid having count(1)=(select count(1) from sc where s.sid=1)
+);
+```
+
+13. 查询没学过"张三"老师讲授的任一门课程的学生姓名
+```mysql
+select sname from student s WHERE s.sid not in(
+SELECT sc.sid from sc, course c, teacher t WHERE t.tname='张三' and c.tid=t.tid and sc.cid = c.cid
+);
+```
+
+14. 查询出只有两门课程的全部学生的学号和姓名
+```mysql
+select s.sid, s.sname
+from student s, sc
+WHERE s.sid=sc.sid
+GROUP BY s.sid
+HAVING count(sc.cid)=2;
+```
+
+15. 查询1990年出生的学生名单
+```mysql
+select * from student WHERE sage like '%1990%';
+```
+
+16. 查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列
+```mysql
+select sc.cid,avg(score) from sc group by sc.cid order by avg(score) DESC , sc.cid;
+```
+
+17. 查询任何一门课程成绩在70分以上的姓名、课程名称和分数；
+```mysql
+select s.sname, c.cname, sc.score from student s, course c, sc
+WHERE s.sid=sc.sid and c.cid=sc.cid and sc.score>70;
+```
+
+18. 查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩
+```mysql
+select s.sid, s.sname, avg(sc.score) from student s, sc
+where s.sid=sc.sid
+GROUP BY s.sid
+HAVING avg(sc.score)>=85
+```
+
+19. 查询不及格的课程
+```mysql
+select s.sid, s.sname, c.cname, sc.score from student s, sc , course c
+where s.sid=sc.sid and sc.cid=c.cid and sc.score<60;
+```
+
+20. 查询课程编号为01且课程成绩在80分以上的学生的学号和姓名；
+```mysql
+select s.sid, s.sname from student s, sc
+where s.sid=sc.sid and sc.score>80 and sc.cid=1;
+```
+
+21. 求每门课程的学生人数
+```mysql
+SELECT sc.cid, count(sc.sid) from sc group by sc.cid;
+```
+
+22. 统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列
+```mysql
+select cid,count(sid) from sc group by cid having count(sid)>5 order by count(sid),cid ASC;
+```
+
+23. 查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩
+```mysql
+select s1.sid,s2.sid,sc1.cid,sc1.score,sc2.score
+from student s1,student s2,sc sc1,sc sc2
+where s1.sid!=s2.sid and s1.sid=sc1.sid and s2.sid=sc2.sid and sc1.cid!=sc2.cid and sc1.score=sc2.score;
+```
+
+24. 检索至少选修两门课程的学生学号
+```mysql
+select sid from sc group by sid having count(cid)>=2;
+```
+
+25. 查询选修了全部课程的学生信息
+```mysql
+select s.* from student s, sc
+WHERE s.sid=sc.sid
+GROUP BY s.sid
+HAVING count(sc.cid) = (select count(*) from course);
+```
+
+26. 查询各学生的年龄
+```mysql
+select s.sname,(TO_DAYS('2017-09-07')-TO_DAYS(s.sage))/365 as age from student s;
+```
+
+27. 查询本月过生日的学生
+```mysql
+SELECT * from student where sage like '%-08-%'
+```
+
+28. 查询下月过生日的学生
+```mysql
+select s.sname from student s where s.sage like '_____08%';
+```
