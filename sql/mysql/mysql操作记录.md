@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-04-10 09:10:20
+ * @LastEditTime: 2019-09-16 15:47:09
+ * @LastEditors: oldestcrab
+ -->
 #### 2019-03-25
 ```
 CREATE TABLE disease_kegg (
@@ -1113,5 +1120,17 @@ create table hospital(
     phone varchar(255),
     way text
 )DEFAULT CHARSET=utf8;
+```
 
+#### 2019-09-16
+```
+# 导入医生名单
+mysqldump -u bmnars -p gene_disease_all doctor  > ./doctor.sql
+vi93nwYV
+
+mysql -u bmnars -p crispr  < ./doctor.sql
+vi93nwYV
+
+# 外键关联
+alter table doctor add  FOREIGN KEY(hospital) REFERENCES hospital(name);
 ```
