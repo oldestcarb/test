@@ -12,3 +12,5 @@
 > [ValidationError](https://www.jianshu.com/p/a3e72df4a794)
 > [signal](https://blog.csdn.net/u013007900/article/details/78110891)
 > [django内置邮件服务](https://www.jianshu.com/p/87b0b738db6b)
+> [Site](https://blog.csdn.net/houht2013/article/details/11370017)
+> [reverse](https://blog.csdn.net/qq_24724109/article/details/86063592)
