@@ -1106,6 +1106,8 @@ pub_date varchar(10)
 create database my_blog charset=utf8;
 create user blog@'%' identified by 'blog';
 GRANT ALL PRIVILEGES ON my_blog.* TO 'blog'@'%' with grant option;
+# 增加所有数据库权限
+GRANT ALL PRIVILEGES ON *.* TO 'blog'@'%' with grant option;
 ```
 
 #### 2019-09-06
