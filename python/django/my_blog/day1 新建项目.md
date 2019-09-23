@@ -21,7 +21,7 @@ migrations/
 ```
 3. 私密配置使用`decouple`分离
 ```python
-# /settings.py
+# /my_blog/settings.py
 
 import os
 from decouple import config, Csv
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 ```
 4. 修改时区，数据库使用mysql
 ```python
-# /settings.py
+# /my_blog/settings.py
 
 LANGUAGE_CODE = 'zh-Hans'
 
@@ -51,7 +51,7 @@ DATABASES = {
 ```
 5. `settings.py`添加`logging`配置
 ```python
-# /settings.py
+# /my_blog/settings.py
 
 # 日志模块logging的配置
 LOGGING = {
@@ -125,74 +125,109 @@ LOGGING = {
 
 6. 创建blog应用，添加应用，编写模型类
 ```python
+# /my_blog/settings.py
+# 添加应用
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'blog',
+]
+
+
 # /blog/models.py
+# 编写模型类
 
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
-class Author(models.Model):
-    """
-    博客作者类型
-    """
-    name = models.CharField(max_length=20, verbose_name='用户名')
-    email = models.EmailField(verbose_name='邮箱')
-    description = models.TextField()
-
-    class Meta:
-        verbose_name = '博客作者'
-        verbose_name_plural = verbose_name
+class BlogType(models.Model):
+    type_name = models.CharField(max_length=15, verbose_name='博客分类')
 
     def __str__(self):
-        return self.name
-
-class Tag(models.Model):
-    """
-    博客分类
-    """
-    tag_name = models.CharField(max_length=20)
-    create_time = models.DateTimeField(auto_now_add=True)
+        return self.type_name
 
     class Meta:
-        verbose_name = '标签'
+        verbose_name = '博客分类'
         verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.tag_name
 
 class Blog(models.Model):
-    """
-    博客
-    """
-    title = models.CharField(max_length=50)
-    # on_delete=models.CASCADE 删除关联数据, 与之关联也删除
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag, blank=True)
-    content = models.TextField()
-    publish_time = models.DateTimeField(auto_now_add=True)
-    update_time = models.DateTimeField(auto_now=True)
-    # 用于标记是否推荐博文
-    recommend = models.BooleanField(default=False)
+    title = models.CharField(max_length=50, verbose_name='标题')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='作者')
+    content = models.TextField(verbose_name='内容')
+    blog_type = models.ForeignKey(BlogType, on_delete=models.DO_NOTHING, verbose_name='博客分类')
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name='发布时间')
+    last_update_time = models.DateTimeField(auto_now=True, verbose_name='更新时间')
+    is_delete = models.BooleanField(default=False)
+
+    def __str__(self):
+        return '博客:'.format(self.title)
 
     class Meta:
         verbose_name = '博客'
         verbose_name_plural = verbose_name
-        ordering = ['-publish_time']
-
-    def __str__(self):
-        return self.title
 
 ```
-7. 添加静态文件配置，使用bootstrap,添加bootstrap文件到static下
+7. 创建超级用户，注册blog模型到后台站点
 ```python
-# /settings.py
+# blog/admin.py
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+from django.contrib import admin
+from .models import BlogType, Blog
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'blog_type', 'created_time', 'last_update_time', 'is_delete')
+
+@admin.register(BlogType)
+class BlogTypeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type_name')
 ```
-
-8. 配置模板，测试视图函数，配置urls
+8. 编写视图函数
 ```python
-# /settings.py
+# blog/views.py
+
+from django.shortcuts import render
+from .models import Blog, BlogType
+from django.shortcuts import get_object_or_404
+
+
+def blog_list(request):
+    blogs = Blog.objects.all()
+
+    context = {
+        'blogs': blogs,
+    }
+
+    return render(request, 'blog/blog_list.html', context=context)
+
+
+def blog_detail(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+
+    context = {
+        'blog': blog,
+    }
+
+    return render(request, 'blog/blog_detail.html', context=context)
+
+def blog_with_type(request, blog_with_type_id):
+    blog_type = get_object_or_404(BlogType, id=blog_with_type_id)
+    blogs = Blog.objects.filter(blog_type=blog_type)
+    context = {
+        'blogs': blogs,
+    }
+
+    return render(request, 'blog/blog_with_type.html', context=context)
+```
+9. 编写简单html页面，配置urls
+```python
+# /my_blog/settings.py
 
 # 模板配置
 TEMPLATES = [
@@ -214,10 +249,28 @@ TEMPLATES = [
 
 
 # /my_blog/urls.py
+# 添加主页和blog url
 
-# 添加blog url
+from django.contrib import admin
+from django.urls import path, include
+from blog.views import blog_list
+
 urlpatterns = [
+    path('', blog_list, name='home'),
     path('admin/', admin.site.urls),
-    path(r'blog/', include(('blog.urls', 'blog'))),
+    path('blog/', include(('blog.urls', 'blog'))),
 ]
+
+
+# /blog/urls.py
+# 添加blog url
+from django.urls import path
+from blog import views
+app_name = 'blog'
+
+urlpatterns = [
+    path('<int:blog_id>/', views.blog_detail, name='blog_detail'),
+    path('type/<int:blog_with_type_id>/', views.blog_with_type, name='blog_with_type'),
+]
+
 ```
