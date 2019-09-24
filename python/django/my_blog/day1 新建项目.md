@@ -1,4 +1,8 @@
 1. 新建项目`my_blog`
+```python
+# 文件路径说明,默认 / = my_blog
+# 即 /.gitignore = my_blog/.gitignore
+```
 2. 添加`.gitignore`
 ```python
 # /.gitignore
@@ -123,7 +127,7 @@ LOGGING = {
 }
 ```
 
-6. 创建blog应用，添加应用，编写模型类
+6. 创建应用`blog`，添加应用，编写模型类
 ```python
 # /my_blog/settings.py
 # 添加应用
@@ -173,7 +177,7 @@ class Blog(models.Model):
         verbose_name_plural = verbose_name
 
 ```
-7. 创建超级用户，注册blog模型到后台站点
+7. 创建超级用户，注册`blog`模型到后台站点
 ```python
 # blog/admin.py
 
