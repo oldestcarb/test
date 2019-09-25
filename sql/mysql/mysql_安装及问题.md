@@ -70,11 +70,11 @@ grant all privileges on bmnars.* to bmnars@localhost;(仅限本地)
 
 
 
-#### 关于caching-sha2-password问题
-
+1. `关于caching-sha2-password问题`
+```mysql
 Navicat连接 Mysql 8.0.11 出现1251- Client does not support authentication protocol 错误解决方法一样。
 root用户登陆
-```mysql
+
 # 修改加密规则
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;
 # 更新一下用户的密码 
@@ -84,28 +84,33 @@ FLUSH PRIVILEGES;
 alter user 'root'@'localhost' identified by 'root';
 # 重启mysql服务,mysqld restart
 ```
-#### Incorrect integer value: '' for column 'id' at row 1
+2. `Incorrect integer value: '' for column 'id' at row 1`
+```
 mysql 5以上的版本如果是空值应该要写NULL或者0(int类型),或者:
-1. 安装mysql的时候去除默认勾选的enable strict SQL mode
-2. 更改mysql中的配置`my.ini`,重启mysql
+   1. 安装mysql的时候去除默认勾选的enable strict SQL mode
+   2. 更改mysql中的配置`my.ini`,重启mysql
+
+   # 默认
+    sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"，
+
+    # 修改
+    sql-mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"，
 ```
-# 默认
-sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"，
 
-# 修改
-sql-mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"，
+
+3. `ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement`
 ```
-
-
-#### ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
-
 mysql默认对导入导出的目录有权限限制，也就是说使用命令行进行导入导出的时候，需要指定目录进行操作；
 1. 查询mysql 的secure_file_priv 值配置的是什么
-```
+
 show global variables like '%secure%';  
-```
+
 2. 导入导出的路径选择这个;或者更改mysql中的配置`my.ini`,重启mysql
-```
+
 # 空表示无限制,null表示不允许
 secure-file-priv=''
+
 ```
+
+4.`mysql时区问题`
+> [mysql时区](https://dev.mysql.com/doc/refman/8.0/en/mysql-tzinfo-to-sql.html)
