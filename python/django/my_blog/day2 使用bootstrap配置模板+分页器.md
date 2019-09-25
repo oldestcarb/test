@@ -287,4 +287,59 @@ def blog_detail(request, blog_id):
 
     return render(request, 'blog/blog_detail.html', context=context)
 ```
+7. 博客详细页显示上下篇博客
+```python
+# blog/views.py
+def blog_detail(request, blog_id):
+    """展示博客详细信息
 
+    :param request: request
+    :param blog_id: 博客ID
+    :return:
+    """
+    # 通过id获取博客对象
+    blog = get_object_or_404(Blog, id=blog_id)
+
+    # 上一条博客
+    previous_blog = Blog.objects.filter(created_time__lt=blog.created_time).first()
+
+    # 下一条博客
+    next_blog = Blog.objects.filter(created_time__gt=blog.created_time).last()
+
+    context = {
+        'blog': blog,
+        'previous_blog': previous_blog,
+        'next_blog': next_blog,
+    }
+
+    return render(request, 'blog/blog_detail.html', context=context)
+
+# blog/templates/blog_detail.html
+# 上下篇博客html
+
+<div class="blog-more">
+<P>上一篇：
+  {# 上一篇 #}
+  {% if previous_blog  %}
+  <a href="{% url 'blog:blog_detail' previous_blog.id %}">{{ previous_blog.title }}</a>
+  {% else %}
+  这是最早的一篇文章哦
+  {% endif %}
+</p>
+<P>下一篇：
+  {# 下一篇 #}
+  {% if next_blog  %}
+  <a href="{% url 'blog:blog_detail' next_blog.id %}">{{ next_blog.title }}</a>
+  {% else %}
+  已经是最新一篇了哦
+  {% endif %}
+</p>
+</div>
+
+# static/blog.css
+# 设置样式
+/* 上下篇博客 */
+div.blog-more {
+    margin-top: 1em;
+}
+```
