@@ -84,15 +84,15 @@
         // 小部件的阴影颜色
         // "widget.shadow":"#ff0000",
         // 当前活动行颜色
-        "editorLineNumber.activeForeground": "#ff0000",
+        "editorLineNumber.activeForeground": "#e06c75",
         // 选中文本颜色
         "editor.selectionBackground":"#446cbd",
         // 与所选项内容相同的区域的边框颜色。
-        "editor.selectionHighlightBorder": "#ff0000",
+        "editor.selectionHighlightBorder": "#282c34",
         // 光标颜色
         "editorCursor.foreground": "#446cbd",
         // 匹配括号的背景色
-        "editorBracketMatch.background": "#ff0000",
+        "editorBracketMatch.background": "#282c34",
 
         // 下拉列表前景色
         "dropdown.foreground": "#ff0000",
@@ -249,14 +249,14 @@
     }
     },
     // "sync.forceUpload": true,
-    // "fileheader.customMade": {
-    //     "Description": "",
-    //     "Author": "oldest",
-    //     "Github": "",
-    //     "Date": "Do not edit", // 文件创建时间(不变)
-    //     "LastEditors": "OBKoro1", // 文件最后编辑者
-    //     "LastEditTime": "Do not edit" // 文件最后编辑时间
-    //     },
+    "fileheader.customMade": {
+        "Description": "",
+        "Author": "oldestcrab",
+        "Github": "",
+        "Date": "Do not edit", // 文件创建时间(不变)
+        "LastEditors": "oldestcrab", // 文件最后编辑者
+        "LastEditTime": "Do not edit" // 文件最后编辑时间
+        },
     // "fileheader.cursorMode": {
     //     "description": "",
     //     "param": "{type}",
