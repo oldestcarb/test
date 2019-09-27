@@ -352,3 +352,92 @@ active
 </script>
 {% endblock script_extends %}
 ```
+
+3. 评论列表获取以及评论数显示
+    1. 修改所有模型的外键关联关系为
+```python
+#  1. 修改所有模型的外键关联关系
+on_delete=models.CASCADE
+
+
+
+# 2. 通过tempatetags的方式返回每篇博客的评论内容，以及初始化评论表单，获取每篇博客的评论数
+# comment/templatetags/comment_tags.py
+
+from ..models import Comment
+from django import template
+from django.contrib.contenttypes.models import ContentType
+from ..models import Comment
+from ..forms import CommentForm
+
+register = template.Library()
+
+@register.simple_tag
+def get_comment_count(obj):
+    """获取具体的某个模型对象的评论数
+
+    :param obj: 具体的某个模型对象
+    :return: 具体的某个模型对象的评论数
+    """
+    content_type = ContentType.objects.get_for_model(obj)
+    return Comment.objects.filter(content_type=content_type, object_id=obj.id).count()
+
+@register.simple_tag
+def get_comment_form(obj):
+    """获取评论初始表单
+
+    :param obj: 具体的某个模型对象
+    :return: 评论初始表单
+    """
+    content_type = ContentType.objects.get_for_model(obj).model
+    form = CommentForm(initial={
+        'content_type': content_type,
+        'object_id': obj.id,
+        'reply_comment_id': 0,
+    })
+    return form
+
+@register.simple_tag
+def get_comments_list(obj):
+    """获取评论列表
+
+    :param obj: 具体的某个模型对象
+    :return: 评论列表
+    """
+    content_type = ContentType.objects.get_for_model(obj)
+    # 获取评论列表
+    comments = Comment.objects.filter(content_type=content_type, object_id=obj.pk, parent=None)
+    return comments.order_by('-comment_time')
+
+
+
+# 3. 添加自定义tag
+# my_blog/settings.py
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        'libraries': {
+            'comment_tags': 'comment.templatetags.comment_tags',
+
+            }
+
+        },
+    },
+]
+
+# 4. 评论框样式修改
+# static/blog.css
+
+# 5. 前端页面展示，js方法设置添加新评论
+# blog/templates/blog_detail.html
+```
