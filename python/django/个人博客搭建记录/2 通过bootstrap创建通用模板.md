@@ -1,3 +1,5 @@
+> [v0.2](https://github.com/oldestcrab/my_blog/releases/tag/v0.2)
+
 1. 修改设置，添加静态文件夹以及模板文件夹
 ```python
 # my_blog/settings.py
