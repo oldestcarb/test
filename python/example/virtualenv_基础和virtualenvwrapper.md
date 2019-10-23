@@ -52,7 +52,23 @@ WORKON_HOME
 # 变量值
 D:\program\program_code\python36_virtualenv_home  
 ```
-2. 使用
+2. linux
+```
+把下面两行代码添加到 ~/.bashrc文件中
+打开文件
+vim ~/.bashrc
+写入以下代码
+export WORKON_HOME=~/envs
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/python/bin/python3.6
+# 指定virtualenv的路径
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/python/bin/virtualenv
+source /usr/local/python/bin/virtualenvwrapper.sh
+
+读取文件，生效
+source ~/.bashrc
+```
+3. 使用
 ```python
 # 创建一个干净的虚拟环境
 mkvirtualenv my_spider
