@@ -200,7 +200,7 @@ mysql -u root -p gene_disease_all < ./gene_disease_all.sql
 # 可远程访问
 create user bmnars@'%' identified by 'vi93nwYV'
 # 只能本地访问
-create user bmnars@'localhost' identified by 'vi93nwYV'
+create user 7JTZsiuI@'localhost' identified by 'sdgsdgr';
 ```
 
 ##### 删除用户
@@ -212,6 +212,6 @@ drop user bmnars@'localhost';
 # 某个数据库权限
 GRANT ALL PRIVILEGES ON gene_disease.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
 # 8.0版本的授权
-GRANT ALL PRIVILEGES ON tiantian.* TO 'tiantian'@'%' with grant option;
+GRANT ALL PRIVILEGES ON my_blog.* TO 7JTZsiuI@'localhost' with grant option;
 # 所有权限
 GRANT ALL PRIVILEGES ON *.* TO bmnars@"%" IDENTIFIED BY "vi93nwYV";
