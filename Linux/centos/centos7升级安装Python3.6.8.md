@@ -13,7 +13,7 @@ tar -zvxf Python-3.6.8.tgz
 4. 进入解压后的目录，安装到/usr/local/python
 ```
 cd Python-3.6.8
-./configure --prefix=/usr/local/python
+./configure --prefix=/usr/local/python --enable-shared
 ```
 5. 编译,安装
 ```
