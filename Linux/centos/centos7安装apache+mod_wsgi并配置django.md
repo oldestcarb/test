@@ -49,6 +49,13 @@ LoadModule wsgi_module modules/mod_wsgi.so
         Require all granted
     </Directory>
 
+    Alias /favicon.ico /home/my_blog/favicon.ico
+    <Directory /home/my_blog>
+        <Files favicon.ico>
+            Require all granted
+        </Files>
+    </Directory>
+
 </VirtualHost>
 ```
 4. 重启apache
