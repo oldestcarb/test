@@ -1136,3 +1136,24 @@ vi93nwYV
 # 外键关联
 alter table doctor add  FOREIGN KEY(hospital) REFERENCES hospital(name);
 ```
+
+
+#### 2019-10-30
+```
+mysql -u root -p
+lwCP1zd6
+create database lis2018 charset='utf8';
+grant all privileges on lis2018.* to bmnars@'%' IDENTIFIED BY "vi93nwYV";
+
+mysql -u bmnars -p lis2018 < ./_cs_lis2018_sample.sql
+
+CREATE TABLE excel_abs_dir (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  abs_dir varchar(255),
+  is_import tinyint default 0,
+  verb varchar(255)
+) DEFAULT CHARSET=utf8;
+
+ALTER TABLE excel_abs_dir ADD unique(abs_dir);
+Delete FROM mysql.user Where User='bmnars' and Host='localhost';
+```
