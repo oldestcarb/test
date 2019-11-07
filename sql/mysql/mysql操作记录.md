@@ -1149,11 +1149,27 @@ mysql -u bmnars -p lis2018 < ./_cs_lis2018_sample.sql
 
 CREATE TABLE excel_abs_dir (
   id int(11) AUTO_INCREMENT PRIMARY KEY,
+  dir varchar(255),
   abs_dir varchar(255),
   is_import tinyint default 0,
   verb varchar(255)
 ) DEFAULT CHARSET=utf8;
 
-ALTER TABLE excel_abs_dir ADD unique(abs_dir);
+ALTER TABLE excel_abs_dir ADD unique(dir);
 Delete FROM mysql.user Where User='bmnars' and Host='localhost';
+```
+
+#### 2019-11-07
+```
+mysqldump -u bmnars -p lis2018 excel_abs_dir_all  > ./excel_abs_dir_all.sql
+vi93nwYV
+mysqldump -u bmnars -p lis2018 _cs_lis2018_test_item_all  > ./_cs_lis2018_test_item_all.sql
+
+mysqldump -u bmnars -p lis2018 _cs_lis2018_test_all  > ./_cs_lis2018_test_all.sql
+
+mysqldump -u bmnars -p lis2018 _cs_lis2018_sample_all  > ./_cs_lis2018_sample_all.sql
+
+alter table _cs_lis2018_test_item add unique(test_no, item_name);
+
+UPDATE excel_abs_dir set is_import =2, verb='旧系统或者excel格式不对' WHERE is_import = 0;
 ```
