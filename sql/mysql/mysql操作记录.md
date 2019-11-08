@@ -1173,3 +1173,20 @@ alter table _cs_lis2018_test_item add unique(test_no, item_name);
 
 UPDATE excel_abs_dir set is_import =2, verb='旧系统或者excel格式不对' WHERE is_import = 0;
 ```
+
+#### 2019-11-08
+```
+alter table _cs_lis2018_sample add unique(barcode_no);
+
+alter table _cs_lis2018_test add unique(sample_id, test_no);
+
+alter table _cs_lis2018_test_item add unique(test_id, item_name);
+
+SELECT s.barcode_no, test.test_no, item.item_name
+FROM _cs_lis2018_test as test 
+INNER JOIN _cs_lis2018_test_item as item 
+INNER JOIN _cs_lis2018_sample as s 
+where item.test_id = test.id 
+and s.id = test.sample_id
+AND s.barcode_no = 151582400
+```
