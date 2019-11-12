@@ -1190,3 +1190,9 @@ where item.test_id = test.id
 and s.id = test.sample_id
 AND s.barcode_no = 151582400
 ```
+
+#### 2019-11-12
+```
+alter table excel_abs_dir add update_time datetime;
+alter table excel_abs_dir add read_time datetime;
+```
