@@ -1196,3 +1196,71 @@ AND s.barcode_no = 151582400
 alter table excel_abs_dir add update_time datetime;
 alter table excel_abs_dir add read_time datetime;
 ```
+#### 2019-11-18
+```
+mysql -u bmnars -p lis2018 <./_cs_lis2018_test_item_all.sql
+vi93nwYV
+mysql -u bmnars -p lis2018 < ./_cs_lis2018_test_all.sql
+
+mysql -u bmnars -p lis2018 < ./_cs_lis2018_sample_all.sql
+
+CREATE TABLE `_cs_lis2018_all` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lot_no` varchar(32) DEFAULT NULL,
+  `barcode_no` varchar(64) DEFAULT NULL,
+  `patient_name` varchar(16) DEFAULT NULL,
+  `patient_sex` varchar(8) DEFAULT NULL,
+  `patient_age` varchar(8) DEFAULT NULL,
+  `patient_phone` varchar(16) DEFAULT NULL,
+  `clinical_diagnosis` varchar(128) DEFAULT NULL,
+  `hospital_name` varchar(128) DEFAULT NULL,
+  `department` varchar(128) DEFAULT NULL,
+  `patient_id` varchar(64) DEFAULT NULL,
+  `patient_sickbed_no` varchar(32) DEFAULT NULL,
+  `doctor_name` varchar(16) DEFAULT NULL,
+  `hospital_code` varchar(16) DEFAULT NULL,
+  `test_no` varchar(32) DEFAULT NULL,
+  `sample_name` varchar(64) DEFAULT NULL,
+  `sample_type` varchar(64) DEFAULT NULL,
+  `sample_status` varchar(128) DEFAULT NULL,
+  `sampling_time` datetime DEFAULT NULL,
+  `receiving_time` datetime DEFAULT NULL,
+  `test_name` varchar(64) DEFAULT NULL,
+  `first_party_send_time` datetime DEFAULT NULL,
+  `first_party_sender` varchar(32) DEFAULT NULL,
+  `second_party_received_time` datetime DEFAULT NULL,
+  `second_party_receiver` varchar(32) DEFAULT NULL,
+  `is_qualified` varchar(8) DEFAULT NULL,
+  `unqualified_reasons` varchar(128) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `created_by` varchar(32) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `modified_by` varchar(32) DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0',
+  `deleted_date` datetime DEFAULT NULL,
+  `deleted_by` varchar(32) DEFAULT NULL,
+  `note` text,
+  `conclusion` text,
+  `template_id` int(11) DEFAULT NULL,
+  `report_name` varchar(16) DEFAULT NULL,
+  `report_date` date DEFAULT NULL,
+  `auditing_name` varchar(16) DEFAULT NULL,
+  `auditing_time` datetime DEFAULT NULL,
+  `approved_name` varchar(16) DEFAULT NULL,
+  `approved_time` datetime DEFAULT NULL,
+  `item_name` varchar(32) DEFAULT NULL,
+  `method` varchar(64) DEFAULT NULL,
+  `result` varchar(32) DEFAULT NULL,
+  `unit` varchar(32) DEFAULT NULL,
+  `advice` varchar(64) DEFAULT NULL,
+  `reference` varchar(32) DEFAULT NULL,
+  `figure_1` varchar(64) DEFAULT NULL,
+  `figure_2` varchar(64) DEFAULT NULL,
+  `figure_3` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+alter table _cs_lis2018_all add unique(barcode_no, item_name);
+
+update excel_abs_dir_all set is_import=0;
+```
