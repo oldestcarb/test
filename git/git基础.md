@@ -141,11 +141,11 @@ git push origin v1.0
 # 推送全部未推送过的本地标签
 git push origin --tags
 
-# 删除一个本地标签v1.0
-git tag -d v.10
+# 删除一个本地标签v1.5
+git tag -d v1.5
 
 # 删除一个远程标签
-git push origin :refs/tags/v1.0
+git push origin :refs/tags/v1.5
 ```
 
 #### 忽略文件
