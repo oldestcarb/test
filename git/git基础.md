@@ -58,7 +58,8 @@ git checkout -- README.md
 git reset HEAD README.md
 
 # 删除文件
-git rm删掉，并且git commit
+git rm
+git commit
 
 # 恢复误删文件(只能恢复文件到最新版本,你会丢失最近一次提交后你修改的内容)
 git checkout -- README.md
@@ -70,7 +71,8 @@ git stash
 git stash list
 
 # 恢复暂存的工作(用git stash apply恢复,但是恢复后,stash内容并不删除,你需要用git stash drop来删除)
-git stash pop （恢复的同时把stash内容也删了）
+# 恢复的同时把stash内容也删了
+git stash pop
 
 # 恢复指定的暂存工作
 git stash apply stash@{0}
