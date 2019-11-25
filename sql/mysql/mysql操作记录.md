@@ -1264,3 +1264,20 @@ alter table _cs_lis2018_all add unique(barcode_no, item_name);
 
 update excel_abs_dir_all set is_import=0;
 ```
+#### 2019-11-19
+```
+# 同一标本两个实验号
+select * from _cs_lis2018_test WHERE sample_id=879;
+
+select 主条码,  实验号, 项目名称, 图片, 合成图片 from excel_image_res ;
+
+SELECT item.id
+FROM _cs_lis2018_test as test 
+INNER JOIN _cs_lis2018_test_item as item 
+INNER JOIN _cs_lis2018_sample as s 
+where item.test_id = test.id 
+and s.id = test.sample_id
+AND s.barcode_no = 1911602935
+and test.test_no = 'ZS2963'
+and item.item_name = 'MOG,CBA法';
+```

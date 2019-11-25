@@ -1,14 +1,14 @@
 ```python
 import re
 ```
-1.
+#### 1.
 ```python
 # name = 'H00048  Hepatocellular carcinoma'
 name = = 'H00048  Hepatocellular carcinoma [PATH:hsa05225 hsa05203 hsa05161 hsa05160 hsa05206]'
 # 先匹配再替换
 re.sub(r'\[.*\]','',re.search(r'H\d+\s+(.*)', name).group(1))
 ```
-2. 匹配网页源码img标签图片网址,并替换为本地链接
+#### 2. 匹配网页源码img标签图片网址,并替换为本地链接
 ```python
 def img_url_change(match):
     """
@@ -30,7 +30,7 @@ def img_url_change(match):
 local_img_pattern = re.compile(r'<img.*?\ssrc="(.*?)".*?>{1}', re.I|re.S)
 article_content = local_img_pattern.sub(img_url_change, article_content)
 ```
-3. 以逗号分隔字符串,但忽略双引号内的逗号
+#### 3. 以逗号分隔字符串,但忽略双引号内的逗号
 ```python
 import re
 
@@ -44,7 +44,7 @@ print(b)
 ['11-BETA-HSD3', '100174880', '"Anemia, Hemolytic"', 'MESH:D000743', '', '"Water Pollutants, Chemical"', '4.49', '', '22425172']
 ```
 
-4. 去掉url最后的`/`
+#### 4. 去掉url最后的`/`
 ```python
 import re
 
