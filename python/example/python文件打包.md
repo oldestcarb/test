@@ -14,5 +14,5 @@ a = Analysis(['server.py'],
 ```
 #### 3. 打包
 ```python
-pyinstaller main.spec
+pyinstaller server.spec
 ```
