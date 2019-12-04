@@ -1281,3 +1281,24 @@ AND s.barcode_no = 1911602935
 and test.test_no = 'ZS2963'
 and item.item_name = 'MOG,CBA法';
 ```
+
+#### 2019-12-04
+```python
+CREATE TABLE `zhihu_answer_spider` (
+    question_id varchar(32),
+    question_title text,
+    question_created datetime,
+    question_url varchar(255),
+    author_name varchar(255),
+    author_url varchar(255),
+    author_headline varchar(255),
+    answer_url varchar(255),
+    answer_created_time datetime,
+    answer_updated_time datetime,
+    answer_voteup_count int(11),
+    answer_comment_count int(11),
+    answer_content text,
+    img_urls text,
+    PRIMARY KEY (question_id, author_name)
+) DEFAULT CHARSET=utf8;
+```
