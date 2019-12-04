@@ -38,13 +38,13 @@ def classify(root_dir):
     # new_file_list = sorted(new_file_list, key = lambda i:int(re.match(r'(\d+)',i).group()))
     new_file_list.sort( key = lambda i:int(re.match(r'(\d+)',i).group()))
     new_count = 1
-    for f in range(0, len(new_file_list), 3):
+    for f in range(0, len(new_file_list), 30):
         # 新建子文件夹
         new_dir = os.path.join(root_dir, str(new_count))
         os.mkdir(new_dir)
 
         # 移动文件
-        stop = min(len(new_file_list), f+3)
+        stop = min(len(new_file_list), f+30)
         for i in range(f, stop):
             file_name = os.path.join(root_dir, new_file_list[i])
             shutil.move(file_name, new_dir)
@@ -52,5 +52,5 @@ def classify(root_dir):
         new_count += 1
 
 if __name__ == "__main__":
-    root_dir = 'C:/Users/crab/Desktop/test'
+    root_dir = 'C:/Users/crab/Desktop/123'
     classify(root_dir)
