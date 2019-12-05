@@ -1284,21 +1284,23 @@ and item.item_name = 'MOG,CBA法';
 
 #### 2019-12-04
 ```python
-CREATE TABLE `zhihu_answer_spider` (
-    question_id varchar(32),
+CREATE TABLE `zhihu_answers_spider` (
     question_title text,
-    question_created datetime,
-    question_url varchar(255),
+    is_browse tinyint default 0,
     author_name varchar(255),
-    author_url varchar(255),
-    author_headline varchar(255),
     answer_url varchar(255),
-    answer_created_time datetime,
-    answer_updated_time datetime,
     answer_voteup_count int(11),
     answer_comment_count int(11),
+    author_headline varchar(255),
+    answer_created_time datetime,
+    answer_updated_time datetime,
     answer_content text,
+    question_id varchar(32),
+    question_created datetime,
+    question_url varchar(255),
+    author_url varchar(255),
     img_urls text,
     PRIMARY KEY (question_id, author_name)
 ) DEFAULT CHARSET=utf8;
+
 ```
