@@ -1304,3 +1304,23 @@ CREATE TABLE `zhihu_answers_spider` (
 ) DEFAULT CHARSET=utf8;
 
 ```
+
+#### 2019-12-06
+```python
+CREATE TABLE `acfun_follow_update` (
+  content_title varchar(128),
+  content_url varchar(128),
+  content_danmu int(11),
+  up_name varchar(32),
+  content_date date,
+  content_discuss int(11),
+  content_view int(11),
+  content_type varchar(8),
+  content_id int(11) primary key,
+  up_url varchar(128),
+  up_flow int(11),
+  up_fans int(11),
+  up_contribute int(11),
+  up_desc varchar(128)
+);
+```
