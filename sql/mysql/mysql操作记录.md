@@ -1335,3 +1335,37 @@ CREATE TABLE `unsplash_images` (
     user_url varchar(128)
 );
 ```
+
+#### 2019-12-12
+```python
+create database fulengen charset='utf8';
+GRANT ALL PRIVILEGES ON fulengen.* TO 'bmnars'@'localhost' with grant option;
+
+CREATE TABLE `academy_meeting` (
+    academy_sponsors varchar(128),
+    academy_title varchar(255),
+    academy_summary text,
+    academy_time varchar(32),
+    academy_place varchar(128),
+    academy_url varchar(255) primary key,
+    academy_site varchar(32)
+);
+
+alter table academy_meeting add academy_true_url varchar(255);
+```
+
+#### 2019-12-13
+```python
+mysqldump -u bmnars -p lis2018 _cs_lis2018_sample  > ./_cs_lis2018_sample.sql
+
+mysqldump -u bmnars -p lis2018 _cs_lis2018_test  > ./_cs_lis2018_test.sql
+
+mysqldump -u bmnars -p lis2018 _cs_lis2018_test_item  > ./_cs_lis2018_test_item.sql
+
+
+mysql -u root -p lis2018 <./_cs_lis2018_test_item.sql
+
+mysql -u root -p lis2018 < ./_cs_lis2018_test.sql
+
+mysql -u root -p lis2018 < ./_cs_lis2018_sample.sql
+```
